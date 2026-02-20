@@ -5,13 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:lara_ai/features/chat/data/presentation/pages/chat_view/chat_view.dart';
 import 'core/data/services/gemini_services.dart';
+import 'core/theme/theme_dark.dart';
+import 'core/theme/theme_light.dart';
 import 'features/chat/data/presentation/cubit/chat_cubit.dart';
 import 'features/chat/data/repositories/chat_repository_impl.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await dotenv.load(fileName: ".env");
 
   // 1. Cria o SERVIÇO (O motor, a API pura)
@@ -40,8 +44,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.deepPurple),
+      title: 'LARA AI',
+      theme: AppThemeLight.theme,
+      darkTheme: AppThemeDark.theme,
+      themeMode: ThemeMode.system,
       home: const ChatView(),
     );
   }

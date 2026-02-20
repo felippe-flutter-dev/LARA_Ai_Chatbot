@@ -37,6 +37,10 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   @override
   Future<void> selectConversation(int conversationId) async {
     _currentConversationId = conversationId;
+    // Load messages and initialize chat session with history so context is preserved
+    final messages = await loadConversationMessages(conversationId);
+    // Convert domain ChatMessage to service ChatMessage and start session
+    _service.startChatFromMessages(messages);
   }
 
   @override

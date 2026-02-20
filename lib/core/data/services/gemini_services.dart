@@ -1,5 +1,6 @@
 // core/data/services/gemini_services.dart
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:lara_ai/features/chat/domain/entities/chat_message.dart';
 
 class GeminiChatService {
   final String apiKey;
@@ -39,6 +40,18 @@ class GeminiChatService {
   void initChat() {
     // Start a chat session early to reduce first-request latency.
     _chatSession ??= _model.startChat();
+  }
+
+  /// Start a chat session and initialize it with a list of saved messages so
+  /// the model has context of the prior conversation.
+  void startChatFromMessages(List<ChatMessage> messages) {
+    final history = messages.map((m) {
+      if (m.isUser) return Content.text(m.text);
+      // model message
+      return Content.model([TextPart(m.text)]);
+    }).toList();
+
+    _chatSession = _model.startChat(history: history);
   }
 
   Stream<String> sendMessageStream(String message) async* {

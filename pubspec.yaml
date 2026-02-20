@@ -41,6 +41,7 @@ dependencies:
   sqflite: ^2.2.8+4
   path: ^1.8.3
   firebase_core: ^4.4.0
+  firebase_auth: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - .env
+    - assets/fonts/roboto/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -93,6 +95,23 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+          style: normal
+        - asset: assets/fonts/roboto/Roboto-Light.ttf
+          style: normal
+          weight: 300
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
+          style: normal
+          weight: 500
+        - asset: assets/fonts/roboto/Roboto-SemiBold.ttf
+          style: normal
+          weight: 600
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+          style: normal
+          weight: 700
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
