@@ -1,0 +1,64 @@
+{
+  "@@locale": "pt",
+
+  "@@__COMMON__": "--- App Global Strings ---",
+  "common_appName": "LARA",
+  "common_appSlogan": "Sua parceira de IA com senso de humor.",
+  "common_onlineStatus": "Online",
+  "common_buttonBack": "Voltar",
+  "common_loading": "Carregando...",
+  "common_errorGeneric": "Ocorreu um erro. Por favor, tente novamente.",
+
+  "@@__LOGIN__": "--- Login Screen ---",
+  "login_welcomeTitle": "Bem-vindo à LARA",
+  "login_welcomeSubtitle": "Sua parceira de IA com senso de humor 😉",
+  "login_buttonGoogle": "Entrar com Google",
+  "login_buttonEmail": "Entrar com E-mail",
+  "login_footerPrefix": "Ao continuar, você concorda com os ",
+  "login_footerTerms": "Termos de Serviço",
+  "login_footerAnd": " e ",
+  "login_footerPrivacy": "Política de Privacidade",
+
+  "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
+  "email_instructionTitle": "Vamos começar.",
+  "email_instructionSubtitle": "Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.",
+  "email_fieldLabel": "Endereço de e-mail",
+  "email_fieldHint": "ex: alex@empresa.com",
+  "email_spamWarning": "Verifique sua caixa de entrada (e spam) após clicar. O link é válido por 10 minutos.",
+  "email_buttonSend": "Enviar E-mail",
+
+  "@@__BIOMETRICS__": "--- Biometrics & Security ---",
+  "bio_welcomeBack": "Bom te ver de novo!",
+  "bio_authRequired": "Autenticação necessária. Use sua biometria para desbloquear a LARA e continuar suas conversas.",
+  "bio_buttonUnlock": "Desbloquear com Biometria",
+  "bio_notYou": "Não é você? ",
+  "bio_switchAccount": "Entrar com outra conta",
+  "bio_dialogEnableTitle": "Ativar Biometria?",
+  "bio_dialogEnableMessage": "Quer entrar mais rápido na próxima vez? Ative o FaceID ou Digital para proteger seus chats sem precisar de um novo link de e-mail.",
+  "bio_buttonEnableNow": "Ativar Agora",
+  "bio_buttonMaybeLater": "Agora Não",
+  "bio_systemTitle": "Autentique para Conversar",
+  "bio_systemSubtitle": "A LARA precisa ter certeza de que é você antes de continuarmos nosso papo.",
+  "bio_fingerprintHint": "Toque no sensor de digital",
+  "bio_usePassword": "Usar Senha",
+
+  "@@__DRAWER__": "--- Conversations Drawer ---",
+  "drawer_title": "Conversas",
+  "drawer_buttonNewChat": "Novo Chat",
+  "drawer_chatTitleDefault": "Ideias de Receitas",
+  "drawer_chatSubtitleDefault": "Pode sugerir algumas di...",
+  "drawer_timeAgo": "há {time}",
+  "@drawer_timeAgo": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "2 horas"
+      }
+    }
+  },
+  "drawer_footerVersion": "LARA AI v1.0 • Feito com ❤️",
+
+  "@@__CHAT__": "--- Chat Interaction ---",
+  "chat_inputHint": "Mensagem para LARA...",
+  "chat_initialGreeting": "Olá! 👋 Eu sou a LARA, sua assistente inteligente. Em que posso te ajudar (ou te fazer rir) hoje?"
+}

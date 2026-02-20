@@ -1,0 +1,64 @@
+{
+  "@@locale": "en",
+
+  "@@__COMMON__": "--- App Global Strings ---",
+  "common_appName": "LARA",
+  "common_appSlogan": "Your AI sidekick with a sense of humor.",
+  "common_onlineStatus": "Online",
+  "common_buttonBack": "Back",
+  "common_loading": "Loading...",
+  "common_errorGeneric": "An error occurred. Please try again.",
+
+  "@@__LOGIN__": "--- Login Screen ---",
+  "login_welcomeTitle": "Welcome to LARA",
+  "login_welcomeSubtitle": "Your AI sidekick with a sense of humor 😉",
+  "login_buttonGoogle": "Sign in with Google",
+  "login_buttonEmail": "Sign in with Email",
+  "login_footerPrefix": "By continuing, you agree to LARA's ",
+  "login_footerTerms": "Terms of Service",
+  "login_footerAnd": " and ",
+  "login_footerPrivacy": "Privacy Policy",
+
+  "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
+  "email_instructionTitle": "Let's get started.",
+  "email_instructionSubtitle": "Enter your email below to receive a secure, passwordless login link.",
+  "email_fieldLabel": "Email address",
+  "email_fieldHint": "e.g., alex@company.com",
+  "email_spamWarning": "Check your inbox (and spam) after clicking. The link is valid for 10 minutes.",
+  "email_buttonSend": "Send Email",
+
+  "@@__BIOMETRICS__": "--- Biometrics & Security ---",
+  "bio_welcomeBack": "Welcome Back!",
+  "bio_authRequired": "Authentication required. Use your biometrics to unlock LARA and continue your conversations.",
+  "bio_buttonUnlock": "Unlock with Biometrics",
+  "bio_notYou": "Not you? ",
+  "bio_switchAccount": "Sign in with a different account",
+  "bio_dialogEnableTitle": "Enable Biometrics?",
+  "bio_dialogEnableMessage": "Want to log in faster next time? Enable FaceID or Fingerprint to secure your chats with LARA without needing a new email link.",
+  "bio_buttonEnableNow": "Enable Now",
+  "bio_buttonMaybeLater": "Maybe Later",
+  "bio_systemTitle": "Authenticate to Chat",
+  "bio_systemSubtitle": "LARA needs to make sure it's really you before continuing our talk.",
+  "bio_fingerprintHint": "Touch the fingerprint sensor",
+  "bio_usePassword": "Use Password",
+
+  "@@__DRAWER__": "--- Conversations Drawer ---",
+  "drawer_title": "Conversations",
+  "drawer_buttonNewChat": "New Chat",
+  "drawer_chatTitleDefault": "Recipe Ideas",
+  "drawer_chatSubtitleDefault": "Can you suggest some healthy di...",
+  "drawer_timeAgo": "{time} ago",
+  "@drawer_timeAgo": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "2 hours"
+      }
+    }
+  },
+  "drawer_footerVersion": "LARA AI v1.0 • Built with ❤️",
+
+  "@@__CHAT__": "--- Chat Interaction ---",
+  "chat_inputHint": "Message LARA...",
+  "chat_initialGreeting": "Hey there! 👋 I'm LARA, your AI sidekick with a sense of humor. What can I help you with today?"
+}
