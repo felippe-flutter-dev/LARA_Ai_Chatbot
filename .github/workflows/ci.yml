@@ -8,7 +8,6 @@ on:
 jobs:
   test-and-merge:
     runs-on: ubuntu-latest
-    # As permissões ficam aqui dentro do job
     permissions:
       contents: write
       pull-requests: write
@@ -17,7 +16,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # Garante que ele use o token com permissão de escrita no checkout
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Flutter
@@ -32,7 +30,7 @@ jobs:
       - name: Linter Analysis
         run: flutter analyze
 
-        - name: Run Tests
+      - name: Run Tests # CORRIGIDO: Alinhado corretamente com os outros '-'
         run: |
           if [ -d "test" ]; then
             flutter test
@@ -45,10 +43,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # LIMPA QUALQUER MUDANÇA LOCAL (Como o pubspec.lock gerado no CI)
           git reset --hard 
+
+          # Pega o nome da branch atual que disparou o evento (ex: dev/feature-1)
+          CURRENT_BRANCH=${GITHUB_REF#refs/heads/}
 
           git fetch origin staging
           git checkout staging
-          git merge origin/main --no-edit
+          
+          # CORRIGIDO: Faz o merge da branch DEV atual para a STAGING
+          git merge origin/$CURRENT_BRANCH --no-edit
           git push origin staging
