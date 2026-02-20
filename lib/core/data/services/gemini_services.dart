@@ -1,4 +1,5 @@
 // core/data/services/gemini_services.dart
+import 'package:flutter/foundation.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:lara_ai/features/chat/domain/entities/chat_message.dart';
 
@@ -69,7 +70,7 @@ class GeminiChatService {
           final preview = text.length > 120
               ? '${text.substring(0, 120)}...'
               : text;
-          print(
+          debugPrint(
             '[GeminiStream] ${DateTime.now().toIso8601String()} chunk len=${text.length} preview="$preview"',
           );
         }
@@ -77,7 +78,7 @@ class GeminiChatService {
       }
     } catch (e, s) {
       if (debug) {
-        print('[GeminiStream] error: $e\n$s');
+        debugPrint('[GeminiStream] error: $e\n$s');
       }
       // Propagate the error to callers so they can handle it (Cubit / UI).
       rethrow;
@@ -91,7 +92,7 @@ class GeminiChatService {
       final response = await _model.generateContent([Content.text(message)]);
       return response.text ?? '';
     } catch (e) {
-      if (debug) print('[GeminiOnce] error: $e');
+      if (debug) debugPrint('[GeminiOnce] error: $e');
       rethrow;
     }
   }

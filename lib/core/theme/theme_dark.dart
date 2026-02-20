@@ -11,9 +11,9 @@ class AppThemeDark {
       scaffoldBackgroundColor: AppColors.darkBg100,
       // Fundo principal
       colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primaryMain,
+        seedColor: AppColors.primaryDark,
         brightness: Brightness.dark,
-        primary: AppColors.primaryMain,
+        primary: AppColors.primaryDark,
         surface: AppColors.darkBg200,
         // Superfície de cards/inputs
         onSurface: AppColors.textOnDark,

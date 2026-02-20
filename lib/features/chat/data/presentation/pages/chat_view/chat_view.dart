@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lara_ai/core/theme/theme_extension.dart';
 import '../../cubit/chat_cubit.dart';
 import '../../cubit/chat_states.dart';
 import '../../widgets/chat_bubble.dart';
@@ -50,7 +51,6 @@ class _ChatViewState extends State<ChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Chat com Lara')),
       drawer: Drawer(
         child: SafeArea(
           child: Column(
@@ -93,60 +93,101 @@ class _ChatViewState extends State<ChatView> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: BlocListener<ChatCubit, ChatState>(
-              listener: (context, state) {
-                if (state is ChatUpdated) {
-                  _vm.scrollToBottom(); // ← ViewModel cuida do scroll
-                } else if (state is ChatError) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.message)));
-                }
-              },
-              child: BlocBuilder<ChatCubit, ChatState>(
-                builder: (context, state) {
-                  return ListView.builder(
-                    controller: _vm.scrollController,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 8,
-                    ),
-                    itemCount: _vm.messages.length,
-                    itemBuilder: (context, index) {
-                      final msg = _vm.messages[index];
-
-                      return Column(
-                        crossAxisAlignment: msg.isUser
-                            ? CrossAxisAlignment.end
-                            : CrossAxisAlignment.start,
-                        children: [
-                          ChatBubble(message: msg),
-                          if (!msg.isUser &&
-                              index == _vm.messages.length - 1 &&
-                              _vm.isTyping)
-                            const Padding(
-                              padding: EdgeInsets.only(left: 20, bottom: 10),
-                              child: SizedBox(
-                                width: 12,
-                                height: 12,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(_vm.getBackgroundImage(context.brightness)),
+            fit: BoxFit.contain,
+            opacity: 0.1,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: BlocListener<ChatCubit, ChatState>(
+                      listener: (context, state) {
+                        if (state is ChatUpdated) {
+                          _vm.scrollToBottom(); // ← ViewModel cuida do scroll
+                        } else if (state is ChatError) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)),
+                          );
+                        }
+                      },
+                      child: BlocBuilder<ChatCubit, ChatState>(
+                        builder: (context, state) {
+                          return ListView.builder(
+                            controller: _vm.scrollController,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 8,
                             ),
-                        ],
-                      );
-                    },
-                  );
-                },
+                            itemCount: _vm.messages.length,
+                            itemBuilder: (context, index) {
+                              final msg = _vm.messages[index];
+
+                              return Column(
+                                crossAxisAlignment: msg.isUser
+                                    ? CrossAxisAlignment.end
+                                    : CrossAxisAlignment.start,
+                                children: [
+                                  ChatBubble(message: msg),
+                                  if (!msg.isUser &&
+                                      index == _vm.messages.length - 1 &&
+                                      _vm.isTyping)
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 20,
+                                        bottom: 10,
+                                      ),
+                                      child: SizedBox(
+                                        width: 12,
+                                        height: 12,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  _buildInput(),
+                ],
               ),
             ),
-          ),
-          _buildInput(),
-        ],
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
+                // 1. Protege contra o recorte da barra de status
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    16,
+                    0,
+                    16,
+                    0,
+                  ), // 2. O respiro lateral e superior
+                  child: AppBar(
+                    toolbarHeight:
+                        64, // 3. Define uma altura fixa para centralizar o conteúdo
+                    title: const Text("LARA"),
+                    centerTitle: true,
+                    // O arredondamento de 18 vem do seu Theme que configuramos antes
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -195,5 +236,6 @@ class _ChatViewState extends State<ChatView> {
 class _ConversationListItem {
   final int id;
   final String title;
+
   _ConversationListItem({required this.id, required this.title});
 }

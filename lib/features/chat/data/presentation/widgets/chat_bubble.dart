@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lara_ai/core/theme/theme_extension.dart';
 import '../../../domain/entities/chat_message.dart'; // Ajuste o path conforme sua estrutura
 
 class ChatBubble extends StatelessWidget {
@@ -18,7 +19,9 @@ class ChatBubble extends StatelessWidget {
               0.75, // Não deixa a bolha ocupar a tela toda
         ),
         decoration: BoxDecoration(
-          color: message.isUser ? Colors.deepPurple[100] : Colors.grey[300],
+          color: message.isUser
+              ? context.theme.colorScheme.primary
+              : Colors.grey[300],
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(15),
             topRight: const Radius.circular(15),

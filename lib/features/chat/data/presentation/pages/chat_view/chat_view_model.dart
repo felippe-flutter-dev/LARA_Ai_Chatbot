@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/theme/app_assets.dart';
 import '../../../../domain/entities/chat_message.dart';
 import '../../../../domain/entities/conversation.dart';
 import '../../cubit/chat_cubit.dart';
@@ -71,6 +72,12 @@ class ChatViewModel {
         // ignora race conditions rápidas
       }
     });
+  }
+
+  String getBackgroundImage(Brightness brightness) {
+    return brightness == Brightness.dark
+        ? AppAssets.backgroundImageChatDark
+        : AppAssets.backgroundImageChatLight;
   }
 
   void dispose() {

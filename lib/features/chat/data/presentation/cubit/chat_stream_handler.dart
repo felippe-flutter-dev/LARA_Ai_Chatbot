@@ -66,7 +66,7 @@ class ChatStreamHandler {
           }
         },
         onError: (e, s) {
-          if (kDebugMode) print('stream error: $e\n$s');
+          if (kDebugMode) debugPrint('stream error: $e\n$s');
           onError(e.toString());
           if (!streamDone.isCompleted) streamDone.complete();
         },
@@ -76,7 +76,7 @@ class ChatStreamHandler {
           try {
             await repository.persistAiMessage(fullResponse);
           } catch (e) {
-            if (kDebugMode) print('[StreamHandler] persist error: $e');
+            if (kDebugMode) debugPrint('[StreamHandler] persist error: $e');
           }
           if (!streamDone.isCompleted) streamDone.complete();
           onComplete(fullResponse);
@@ -107,11 +107,13 @@ class ChatStreamHandler {
       try {
         await repository.persistAiMessage(finalText);
       } catch (e) {
-        if (kDebugMode) print('[StreamHandler] persist fallback error: $e');
+        if (kDebugMode) {
+          debugPrint('[StreamHandler] persist fallback error: $e');
+        }
       }
       onComplete(finalText);
     } catch (e) {
-      if (kDebugMode) print('[StreamHandler] fallback error: $e');
+      if (kDebugMode) debugPrint('[StreamHandler] fallback error: $e');
       onError(e.toString());
     } finally {
       if (!streamDone.isCompleted) streamDone.complete();
@@ -121,7 +123,7 @@ class ChatStreamHandler {
   void _logTimeToFirstChunk(DateTime sendStart) {
     if (kDebugMode) {
       final elapsed = DateTime.now().difference(sendStart);
-      print(
+      debugPrint(
         '[StreamHandler] time to first chunk: ${elapsed.inMilliseconds} ms',
       );
     }

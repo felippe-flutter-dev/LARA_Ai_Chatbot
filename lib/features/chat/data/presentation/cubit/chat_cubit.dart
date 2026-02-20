@@ -20,7 +20,7 @@ class ChatCubit extends Cubit<ChatState> {
     try {
       repository.initChat();
     } catch (e) {
-      if (kDebugMode) print('initChat failed: $e');
+      if (kDebugMode) debugPrint('initChat failed: $e');
     }
 
     // Ensure there's at least one conversation (run async)
@@ -31,7 +31,7 @@ class ChatCubit extends Cubit<ChatState> {
           final id = await repository.createConversation('Nova conversa');
           await repository.selectConversation(id);
           if (kDebugMode) {
-            print('[ChatCubit] created default conversation id=$id');
+            debugPrint('[ChatCubit] created default conversation id=$id');
           }
           // load messages (likely empty)
           final msgs = await repository.loadConversationMessages(id);
@@ -49,11 +49,13 @@ class ChatCubit extends Cubit<ChatState> {
             ..addAll(msgs);
           emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
           if (kDebugMode) {
-            print('[ChatCubit] selected conversation id=${convos.first.id}');
+            debugPrint(
+              '[ChatCubit] selected conversation id=${convos.first.id}',
+            );
           }
         }
       } catch (e) {
-        if (kDebugMode) print('[ChatCubit] conversation init error: $e');
+        if (kDebugMode) debugPrint('[ChatCubit] conversation init error: $e');
       }
     });
   }
@@ -69,7 +71,7 @@ class ChatCubit extends Cubit<ChatState> {
         await repository.selectConversation(id);
       }
     } catch (e) {
-      if (kDebugMode) print('failed to create/select conversation: $e');
+      if (kDebugMode) debugPrint('failed to create/select conversation: $e');
     }
 
     _addUserMessage(text);
@@ -139,7 +141,7 @@ class ChatCubit extends Cubit<ChatState> {
         }
       }
     } catch (e) {
-      if (kDebugMode) print('failed to update conversation title: $e');
+      if (kDebugMode) debugPrint('failed to update conversation title: $e');
     }
   }
 
