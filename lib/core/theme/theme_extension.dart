@@ -8,4 +8,6 @@ extension ThemeExtension on BuildContext {
   Color get primaryColorScheme => Theme.of(this).colorScheme.primary;
 
   Brightness get brightness => Theme.of(this).brightness;
+
+  bool get isDarkMode => brightness == Brightness.dark;
 }

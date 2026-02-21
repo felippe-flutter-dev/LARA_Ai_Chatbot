@@ -4,11 +4,15 @@ import 'package:lara_ai/features/auth/presentation/pages/email_login/email_login
 import 'package:lara_ai/features/auth/presentation/pages/email_login/email_view_model.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/login_page.dart';
 
+import '../presentation/pages/biometric_login/biometric_login_page.dart';
+import '../presentation/pages/biometric_login/biometric_login_view_model.dart';
+
 class AuthModule extends Module {
   @override
   void binds(Injector i) {
     super.binds(i);
     i.addLazySingleton(EmailViewModel.new);
+    i.addLazySingleton(BiometricLoginViewModel.new);
   }
 
   @override
@@ -16,5 +20,9 @@ class AuthModule extends Module {
     super.routes(r);
     r.child(RouteNames.loginPage, child: (context) => LoginPage());
     r.child(RouteNames.emailPage, child: (context) => EmailLoginPage());
+    r.child(
+      RouteNames.biometricLogin,
+      child: (context) => BiometricLoginPage(),
+    );
   }
 }

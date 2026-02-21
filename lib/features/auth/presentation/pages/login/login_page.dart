@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lara_ai/core/constants/font_sizes.dart';
 import 'package:lara_ai/core/constants/navigation_route_names.dart';
+import 'package:lara_ai/core/constants/route_names.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/google_login_button.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
@@ -43,7 +44,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 40.h),
-              Row(children: [Expanded(child: GoogleLoginButton())]),
+              Row(
+                children: [
+                  Expanded(
+                    child: GoogleLoginButton(
+                      onPressed: () =>
+                          Modular.to.pushNamed(RouteNames.biometricLogin),
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: 16.h),
               FilledButtonCustom(
                 text: context.localization!.login_buttonEmail,

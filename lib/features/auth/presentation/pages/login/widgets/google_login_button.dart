@@ -8,16 +8,16 @@ import 'package:lara_ai/l10n/extension_localizations.dart';
 import '../../../../../../core/theme/app_colors.dart';
 
 class GoogleLoginButton extends StatelessWidget {
-  const GoogleLoginButton({super.key});
+  final Function()? onPressed;
+  const GoogleLoginButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    final bool isDark = context.brightness == Brightness.dark;
     return FilledButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(
-          isDark ? AppColors.darkBg200 : AppColors.gray50,
+          context.isDarkMode ? AppColors.darkBg200 : AppColors.gray50,
         ),
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
@@ -26,7 +26,9 @@ class GoogleLoginButton extends StatelessWidget {
         ),
         side: WidgetStatePropertyAll(
           BorderSide(
-            color: isDark ? AppColors.surfaceOverlay : AppColors.gray100,
+            color: context.isDarkMode
+                ? AppColors.surfaceOverlay
+                : AppColors.gray100,
           ),
         ),
       ),

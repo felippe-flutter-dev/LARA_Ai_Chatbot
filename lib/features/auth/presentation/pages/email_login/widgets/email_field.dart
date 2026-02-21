@@ -12,13 +12,14 @@ class EmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = context.brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12.r)),
-        color: isDark ? AppColors.darkBg300 : AppColors.gray50,
+        color: context.isDarkMode ? AppColors.darkBg300 : AppColors.gray50,
         border: Border.all(
-          color: isDark ? AppColors.surfaceOverlay : AppColors.gray100,
+          color: context.isDarkMode
+              ? AppColors.surfaceOverlay
+              : AppColors.gray100,
         ),
       ),
       padding: EdgeInsetsGeometry.symmetric(horizontal: 16.w),
@@ -31,7 +32,9 @@ class EmailField extends StatelessWidget {
           hintText: context.localization!.email_fieldHint,
           hintStyle: context.textTheme.bodyLarge!.copyWith(
             fontSize: FontSizes.bodyLarge,
-            color: isDark ? AppColors.surfaceOverlay : AppColors.gray200,
+            color: context.isDarkMode
+                ? AppColors.surfaceOverlay
+                : AppColors.gray200,
           ),
           border: InputBorder.none,
         ),

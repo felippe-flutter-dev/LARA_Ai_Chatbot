@@ -39,6 +39,9 @@ class AppColors {
 
   static Color get textOnDark => Color(0xFFE1E1E1);
 
-  static LinearGradient get purpleGradient =>
-      LinearGradient(colors: [Color(0xFFAB46FE), Color(0xFF9811FA)]);
+  static LinearGradient get purpleGradient => LinearGradient(
+    colors: [Color(0xFFAB46FE), Color(0xFF9811FA)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
 }
