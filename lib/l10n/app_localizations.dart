@@ -185,14 +185,8 @@ abstract class AppLocalizations {
   /// No description provided for @email_instructionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Let\'s get started.'**
+  /// **'Let\'s get started. Enter your email below to receive a secure, passwordless login link.'**
   String get email_instructionTitle;
-
-  /// No description provided for @email_instructionSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your email below to receive a secure, passwordless login link.'**
-  String get email_instructionSubtitle;
 
   /// No description provided for @email_fieldLabel.
   ///

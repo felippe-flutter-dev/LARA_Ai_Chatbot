@@ -53,11 +53,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get login_footerPrivacy => 'Política de Privacidade';
 
   @override
-  String get email_instructionTitle => 'Vamos começar.';
-
-  @override
-  String get email_instructionSubtitle =>
-      'Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.';
+  String get email_instructionTitle =>
+      'Vamos começar. Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.';
 
   @override
   String get email_fieldLabel => 'Endereço de e-mail';

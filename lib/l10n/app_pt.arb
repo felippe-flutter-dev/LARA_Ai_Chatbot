@@ -20,8 +20,7 @@
   "login_footerPrivacy": "Política de Privacidade",
 
   "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
-  "email_instructionTitle": "Vamos começar.",
-  "email_instructionSubtitle": "Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.",
+  "email_instructionTitle": "Vamos começar. Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.",
   "email_fieldLabel": "Endereço de e-mail",
   "email_fieldHint": "ex: alex@empresa.com",
   "email_spamWarning": "Verifique sua caixa de entrada (e spam) após clicar. O link é válido por 10 minutos.",

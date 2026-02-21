@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lara_ai/core/constants/font_sizes.dart';
-import 'package:lara_ai/core/theme/app_colors.dart';
+import 'package:lara_ai/core/constants/navigation_route_names.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
-import 'package:lara_ai/features/auth/presentation/widgets/google_login_button.dart';
-import 'package:lara_ai/features/auth/presentation/widgets/logo_app.dart';
+import 'package:lara_ai/features/auth/presentation/pages/login/widgets/google_login_button.dart';
+import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
+import 'package:lara_ai/features/auth/presentation/widgets/filled_buttom_custom.dart';
 import 'package:lara_ai/l10n/extension_localizations.dart';
 
 class LoginPage extends StatefulWidget {
@@ -43,30 +45,11 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 40.h),
               Row(children: [Expanded(child: GoogleLoginButton())]),
               SizedBox(height: 16.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: FilledButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          context.theme.colorScheme.primary,
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Padding(
-                        padding: EdgeInsetsGeometry.symmetric(vertical: 15.h),
-                        child: Text(
-                          context.localization!.login_buttonEmail,
-                          style: context.textTheme.bodyLarge!.copyWith(
-                            fontSize: FontSizes.bodyLarge,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.gray50,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              FilledButtonCustom(
+                text: context.localization!.login_buttonEmail,
+                onPressed: () {
+                  Modular.to.pushNamed(NavigationRouteNames.toEmailLoginPage);
+                },
               ),
               SizedBox(height: 40.h),
               Text.rich(

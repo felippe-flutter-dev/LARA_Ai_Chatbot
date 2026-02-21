@@ -5,7 +5,7 @@ import 'package:lara_ai/core/theme/app_assets.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
 import 'package:lara_ai/l10n/extension_localizations.dart';
 
-import '../../../../core/theme/app_colors.dart';
+import '../../../../../../core/theme/app_colors.dart';
 
 class GoogleLoginButton extends StatelessWidget {
   const GoogleLoginButton({super.key});

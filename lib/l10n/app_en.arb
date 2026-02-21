@@ -20,8 +20,7 @@
   "login_footerPrivacy": "Privacy Policy",
 
   "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
-  "email_instructionTitle": "Let's get started.",
-  "email_instructionSubtitle": "Enter your email below to receive a secure, passwordless login link.",
+  "email_instructionTitle": "Let's get started. Enter your email below to receive a secure, passwordless login link.",
   "email_fieldLabel": "Email address",
   "email_fieldHint": "e.g., alex@company.com",
   "email_spamWarning": "Check your inbox (and spam) after clicking. The link is valid for 10 minutes.",
