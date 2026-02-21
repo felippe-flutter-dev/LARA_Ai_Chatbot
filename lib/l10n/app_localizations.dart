@@ -188,35 +188,65 @@ abstract class AppLocalizations {
   /// **'Privacy Policy'**
   String get login_footerPrivacy;
 
-  /// No description provided for @email_instructionTitle.
+  /// No description provided for @auth_loginEmailTitle.
   ///
   /// In en, this message translates to:
-  /// **'Let\'s get started. Enter your email below to receive a secure, passwordless login link.'**
-  String get email_instructionTitle;
+  /// **'Email Login'**
+  String get auth_loginEmailTitle;
 
-  /// No description provided for @email_fieldLabel.
+  /// No description provided for @auth_registerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Email address'**
-  String get email_fieldLabel;
+  /// **'Create your account'**
+  String get auth_registerTitle;
 
-  /// No description provided for @email_fieldHint.
+  /// No description provided for @auth_emailLabel.
   ///
   /// In en, this message translates to:
-  /// **'e.g., alex@company.com'**
-  String get email_fieldHint;
+  /// **'Email'**
+  String get auth_emailLabel;
 
-  /// No description provided for @email_spamWarning.
+  /// No description provided for @auth_passwordLabel.
   ///
   /// In en, this message translates to:
-  /// **'Check your inbox (and spam) after clicking. The link is valid for 10 minutes.'**
-  String get email_spamWarning;
+  /// **'Password'**
+  String get auth_passwordLabel;
 
-  /// No description provided for @email_buttonSend.
+  /// No description provided for @auth_confirmPasswordLabel.
   ///
   /// In en, this message translates to:
-  /// **'Send Email'**
-  String get email_buttonSend;
+  /// **'Confirm Password'**
+  String get auth_confirmPasswordLabel;
+
+  /// No description provided for @auth_buttonLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get auth_buttonLogin;
+
+  /// No description provided for @auth_buttonRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get auth_buttonRegister;
+
+  /// No description provided for @auth_noAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account? '**
+  String get auth_noAccount;
+
+  /// No description provided for @auth_registerLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get auth_registerLink;
+
+  /// No description provided for @auth_registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful! Please login.'**
+  String get auth_registerSuccess;
 
   /// No description provided for @bio_welcomeBack.
   ///
@@ -296,6 +326,12 @@ abstract class AppLocalizations {
   /// **'Use Password'**
   String get bio_usePassword;
 
+  /// No description provided for @bio_errorAuth.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric authentication failed. Please try again.'**
+  String get bio_errorAuth;
+
   /// No description provided for @drawer_title.
   ///
   /// In en, this message translates to:
@@ -353,7 +389,7 @@ abstract class AppLocalizations {
   /// No description provided for @chat_inputHint.
   ///
   /// In en, this message translates to:
-  /// **'Message LARA...'**
+  /// **'Type here...'**
   String get chat_inputHint;
 
   /// No description provided for @chat_initialGreeting.
@@ -361,6 +397,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hey there! 👋 I\'m LARA, your AI sidekick with a sense of humor. What can I help you with today?'**
   String get chat_initialGreeting;
+
+  /// No description provided for @chat_settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LARA Settings'**
+  String get chat_settingsTitle;
+
+  /// No description provided for @chat_personalityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Personality'**
+  String get chat_personalityLabel;
+
+  /// No description provided for @chat_personalityNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get chat_personalityNormal;
+
+  /// No description provided for @chat_personalityConcise.
+  ///
+  /// In en, this message translates to:
+  /// **'Concise'**
+  String get chat_personalityConcise;
+
+  /// No description provided for @chat_personalitySarcastic.
+  ///
+  /// In en, this message translates to:
+  /// **'Sarcastic'**
+  String get chat_personalitySarcastic;
+
+  /// No description provided for @chat_temperatureLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get chat_temperatureLabel;
+
+  /// No description provided for @chat_maxTokensLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Characters'**
+  String get chat_maxTokensLabel;
+
+  /// No description provided for @chat_buttonSaveSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Settings'**
+  String get chat_buttonSaveSettings;
+
+  /// No description provided for @chat_retryMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Response error. Try again?'**
+  String get chat_retryMessage;
+
+  /// No description provided for @made_with_love.
+  ///
+  /// In en, this message translates to:
+  /// **'Made with ❤️ by Felippe Pinheiro'**
+  String get made_with_love;
 }
 
 class _AppLocalizationsDelegate

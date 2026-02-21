@@ -29,6 +29,7 @@ class BiometricHeader extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: AppColors.gray50,
             ),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 16.h),
           Text(
@@ -38,6 +39,7 @@ class BiometricHeader extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: AppColors.gray50,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

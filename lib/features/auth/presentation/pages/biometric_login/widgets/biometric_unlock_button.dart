@@ -14,11 +14,11 @@ class BiometricUnlockButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final vm = Modular.get<BiometricLoginViewModel>();
     return GestureDetector(
-      onTap: () => vm.showBiometricDialog(context),
+      onTap: () => vm.authenticate(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          FingerprintIcon(size: 150),
+          const FingerprintIcon(size: 150),
           SizedBox(height: 16.h),
           Text(
             context.localization!.bio_buttonUnlock,
@@ -27,6 +27,7 @@ class BiometricUnlockButton extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: context.primaryColorScheme,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

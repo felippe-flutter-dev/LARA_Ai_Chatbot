@@ -2,16 +2,26 @@
 setlocal enabledelayedexpansion
 
 echo --------------------------------------
-echo [1/4] Limpando e formatando o codigo...
+echo [1/5] Limpando e formatando o codigo...
 call dart fix --apply
 call dart format .
 
 echo --------------------------------------
-echo [2/4] Rodando linter (flutter analyze)...
+echo [2/5] Rodando linter (flutter analyze)...
 call flutter analyze
 if %errorlevel% neq 0 (
     echo.
     echo [ERRO] O linter encontrou problemas. Corrija-os antes de subir.
+    pause
+    exit /b 1
+)
+
+echo --------------------------------------
+echo [3/5] Rodando testes automatizados (flutter test)...
+call flutter test
+if %errorlevel% neq 0 (
+    echo.
+    echo [ERRO] Falha na execucao dos testes. O processo foi abortado.
     pause
     exit /b 1
 )
@@ -31,7 +41,7 @@ if "!MESSAGE!"=="" (
 )
 
 echo --------------------------------------
-echo [3/4] Preparando commit...
+echo [4/5] Preparando commit...
 
 :: Adiciona tudo
 git add .
@@ -45,7 +55,7 @@ if %errorlevel% neq 0 (
 )
 
 echo --------------------------------------
-echo [4/4] Enviando para o GitHub (origin !BRANCH!)...
+echo [5/5] Enviando para o GitHub (origin !BRANCH!)...
 git push origin !BRANCH!
 
 if %errorlevel% neq 0 (

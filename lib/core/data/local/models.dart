@@ -1,5 +1,6 @@
 class ConversationEntity {
   final int? id;
+  final String userId;
   final String title;
   final String lastMessage;
   final int createdAt;
@@ -7,28 +8,34 @@ class ConversationEntity {
 
   ConversationEntity({
     this.id,
+    required this.userId,
     required this.title,
-    required this.lastMessage,
+    this.lastMessage = '',
     required this.createdAt,
     required this.updateAt,
   });
 
-  Map<String, Object?> toMap() => {
-    if (id != null) 'id': id,
-    'title': title,
-    'lastMessage': lastMessage,
-    'createdAt': createdAt,
-    'updateAt': updateAt,
-  };
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'userId': userId,
+      'title': title,
+      'lastMessage': lastMessage,
+      'createdAt': createdAt,
+      'updateAt': updateAt,
+    };
+  }
 
-  static ConversationEntity fromMap(Map<String, Object?> map) =>
-      ConversationEntity(
-        id: map['id'] as int?,
-        title: map['title'] as String? ?? '',
-        lastMessage: map['lastMessage'] as String? ?? '',
-        createdAt: map['createdAt'] as int? ?? 0,
-        updateAt: map['updateAt'] as int? ?? 0,
-      );
+  factory ConversationEntity.fromMap(Map<String, dynamic> map) {
+    return ConversationEntity(
+      id: map['id'],
+      userId: map['userId'] ?? '',
+      title: map['title'] ?? '',
+      lastMessage: map['lastMessage'] ?? '',
+      createdAt: map['createdAt'] ?? 0,
+      updateAt: map['updateAt'] ?? 0,
+    );
+  }
 }
 
 class MessageEntity {
@@ -46,19 +53,23 @@ class MessageEntity {
     required this.createdAt,
   });
 
-  Map<String, Object?> toMap() => {
-    if (id != null) 'id': id,
-    'conversationId': conversationId,
-    'text': text,
-    'isUser': isUser ? 1 : 0,
-    'createdAt': createdAt,
-  };
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'conversationId': conversationId,
+      'text': text,
+      'isUser': isUser ? 1 : 0,
+      'createdAt': createdAt,
+    };
+  }
 
-  static MessageEntity fromMap(Map<String, Object?> map) => MessageEntity(
-    id: map['id'] as int?,
-    conversationId: map['conversationId'] as int,
-    text: map['text'] as String? ?? '',
-    isUser: (map['isUser'] as int? ?? 0) == 1,
-    createdAt: map['createdAt'] as int? ?? 0,
-  );
+  factory MessageEntity.fromMap(Map<String, dynamic> map) {
+    return MessageEntity(
+      id: map['id'],
+      conversationId: map['conversationId'],
+      text: map['text'],
+      isUser: map['isUser'] == 1,
+      createdAt: map['createdAt'],
+    );
+  }
 }

@@ -20,12 +20,17 @@
   "login_footerAnd": " and ",
   "login_footerPrivacy": "Privacy Policy",
 
-  "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
-  "email_instructionTitle": "Let's get started. Enter your email below to receive a secure, passwordless login link.",
-  "email_fieldLabel": "Email address",
-  "email_fieldHint": "e.g., alex@company.com",
-  "email_spamWarning": "Check your inbox (and spam) after clicking. The link is valid for 10 minutes.",
-  "email_buttonSend": "Send Email",
+  "@@__AUTH__": "--- Auth ---",
+  "auth_loginEmailTitle": "Email Login",
+  "auth_registerTitle": "Create your account",
+  "auth_emailLabel": "Email",
+  "auth_passwordLabel": "Password",
+  "auth_confirmPasswordLabel": "Confirm Password",
+  "auth_buttonLogin": "Login",
+  "auth_buttonRegister": "Register",
+  "auth_noAccount": "Don't have an account? ",
+  "auth_registerLink": "Sign up",
+  "auth_registerSuccess": "Registration successful! Please login.",
 
   "@@__BIOMETRICS__": "--- Biometrics & Security ---",
   "bio_welcomeBack": "Welcome Back!",
@@ -41,6 +46,7 @@
   "bio_systemSubtitle": "LARA needs to make sure it's really you before continuing our talk.",
   "bio_fingerprintHint": "Touch the fingerprint sensor",
   "bio_usePassword": "Use Password",
+  "bio_errorAuth": "Biometric authentication failed. Please try again.",
 
   "@@__DRAWER__": "--- Conversations Drawer ---",
   "drawer_title": "Conversations",
@@ -54,6 +60,17 @@
   "drawer_footerVersion": "LARA AI v1.0 • Built with ❤️",
 
   "@@__CHAT__": "--- Chat Interaction ---",
-  "chat_inputHint": "Message LARA...",
-  "chat_initialGreeting": "Hey there! 👋 I'm LARA, your AI sidekick with a sense of humor. What can I help you with today?"
+  "chat_inputHint": "Type here...",
+  "chat_initialGreeting": "Hey there! 👋 I'm LARA, your AI sidekick with a sense of humor. What can I help you with today?",
+  "chat_settingsTitle": "LARA Settings",
+  "chat_personalityLabel": "Personality",
+  "chat_personalityNormal": "Normal",
+  "chat_personalityConcise": "Concise",
+  "chat_personalitySarcastic": "Sarcastic",
+  "chat_temperatureLabel": "Temperature",
+  "chat_maxTokensLabel": "Max Characters",
+  "chat_buttonSaveSettings": "Save Settings",
+  "chat_retryMessage": "Response error. Try again?",
+
+  "made_with_love": "Made with ❤️ by Felippe Pinheiro"
 }

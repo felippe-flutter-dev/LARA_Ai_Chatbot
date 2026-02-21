@@ -55,21 +55,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login_footerPrivacy => 'Privacy Policy';
 
   @override
-  String get email_instructionTitle =>
-      'Let\'s get started. Enter your email below to receive a secure, passwordless login link.';
+  String get auth_loginEmailTitle => 'Email Login';
 
   @override
-  String get email_fieldLabel => 'Email address';
+  String get auth_registerTitle => 'Create your account';
 
   @override
-  String get email_fieldHint => 'e.g., alex@company.com';
+  String get auth_emailLabel => 'Email';
 
   @override
-  String get email_spamWarning =>
-      'Check your inbox (and spam) after clicking. The link is valid for 10 minutes.';
+  String get auth_passwordLabel => 'Password';
 
   @override
-  String get email_buttonSend => 'Send Email';
+  String get auth_confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get auth_buttonLogin => 'Login';
+
+  @override
+  String get auth_buttonRegister => 'Register';
+
+  @override
+  String get auth_noAccount => 'Don\'t have an account? ';
+
+  @override
+  String get auth_registerLink => 'Sign up';
+
+  @override
+  String get auth_registerSuccess => 'Registration successful! Please login.';
 
   @override
   String get bio_welcomeBack => 'Welcome Back!';
@@ -112,6 +125,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bio_usePassword => 'Use Password';
+
+  @override
+  String get bio_errorAuth =>
+      'Biometric authentication failed. Please try again.';
 
   @override
   String get drawer_title => 'Conversations';
@@ -165,9 +182,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get drawer_footerVersion => 'LARA AI v1.0 • Built with ❤️';
 
   @override
-  String get chat_inputHint => 'Message LARA...';
+  String get chat_inputHint => 'Type here...';
 
   @override
   String get chat_initialGreeting =>
       'Hey there! 👋 I\'m LARA, your AI sidekick with a sense of humor. What can I help you with today?';
+
+  @override
+  String get chat_settingsTitle => 'LARA Settings';
+
+  @override
+  String get chat_personalityLabel => 'Personality';
+
+  @override
+  String get chat_personalityNormal => 'Normal';
+
+  @override
+  String get chat_personalityConcise => 'Concise';
+
+  @override
+  String get chat_personalitySarcastic => 'Sarcastic';
+
+  @override
+  String get chat_temperatureLabel => 'Temperature';
+
+  @override
+  String get chat_maxTokensLabel => 'Max Characters';
+
+  @override
+  String get chat_buttonSaveSettings => 'Save Settings';
+
+  @override
+  String get chat_retryMessage => 'Response error. Try again?';
+
+  @override
+  String get made_with_love => 'Made with ❤️ by Felippe Pinheiro';
 }

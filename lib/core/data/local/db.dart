@@ -20,11 +20,12 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 2, // ← alterado
+      version: 3,
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE conversations(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
+          userId TEXT,
           title TEXT,
           lastMessage TEXT,
           createdAt INTEGER,
@@ -50,6 +51,11 @@ class AppDatabase {
           );
           await db.execute(
             'ALTER TABLE conversations ADD COLUMN updateAt INTEGER DEFAULT 0',
+          );
+        }
+        if (oldVersion < 3) {
+          await db.execute(
+            'ALTER TABLE conversations ADD COLUMN userId TEXT DEFAULT ""',
           );
         }
       },

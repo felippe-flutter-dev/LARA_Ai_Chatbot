@@ -7,15 +7,14 @@ import '../../../../core/data/local/models.dart';
 
 class ChatRepositoryImpl implements IChatRepositoryCustom {
   final GeminiChatService _service;
-  final ConversationDao _dao = ConversationDao();
+  final ConversationDao _dao;
   int? _currentConversationId;
 
-  ChatRepositoryImpl(this._service);
+  ChatRepositoryImpl(this._service, this._dao);
 
-  // Create a new conversation and set it as current
   @override
-  Future<int> createConversation(String title) async {
-    final id = await _dao.createConversation(title);
+  Future<int> createConversation(String title, String userId) async {
+    final id = await _dao.createConversation(title, userId);
     _currentConversationId = id;
     return id;
   }
@@ -26,8 +25,8 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   }
 
   @override
-  Future<List<Conversation>> listConversations() async {
-    final rows = await _dao.listConversations();
+  Future<List<Conversation>> listConversations(String userId) async {
+    final rows = await _dao.listConversations(userId);
     return rows
         .map(
           (r) => Conversation(
@@ -50,16 +49,12 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   @override
   Future<void> selectConversation(int conversationId) async {
     _currentConversationId = conversationId;
-    // Load messages and initialize chat session with history so context is preserved
     final messages = await loadConversationMessages(conversationId);
-    // Convert domain ChatMessage to service ChatMessage and start session
     _service.startChatFromMessages(messages);
   }
 
   @override
   Stream<String> sendMessage(String message) async* {
-    // We no longer persist the user message here immediately. The handler will
-    // call persistUserMessage only after confirming the AI produced a response.
     await for (final chunk in _service.sendMessageStream(message)) {
       yield chunk;
     }
@@ -69,12 +64,11 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   void initChat() => _service.initChat();
 
   @override
-  List<ChatMessage> get history => []; // Implementação simples por enquanto
+  List<ChatMessage> get history => [];
 
   @override
   Future<String> sendMessageOnce(String message) async {
     final result = await _service.sendMessageOnce(message);
-    // persist final result
     if (_currentConversationId != null) {
       final m = MessageEntity(
         conversationId: _currentConversationId!,
@@ -117,7 +111,13 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   Future<List<ChatMessage>> loadConversationMessages(int conversationId) async {
     final rows = await _dao.getMessages(conversationId);
     return rows
-        .map((m) => ChatMessage(text: m.text, isUser: m.isUser))
+        .map(
+          (m) => ChatMessage(
+            text: m.text,
+            isUser: m.isUser,
+            timestamp: DateTime.fromMillisecondsSinceEpoch(m.createdAt),
+          ),
+        )
         .toList();
   }
 
@@ -126,7 +126,6 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
     await _dao.updateLastMessage(conversationId, lastMessage);
   }
 
-  // New helpers
   @override
   int? get currentConversationId => _currentConversationId;
 

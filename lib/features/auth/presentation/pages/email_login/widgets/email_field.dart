@@ -29,7 +29,7 @@ class EmailField extends StatelessWidget {
           fontSize: FontSizes.bodyLarge,
         ),
         decoration: InputDecoration(
-          hintText: context.localization!.email_fieldHint,
+          hintText: context.localization!.auth_emailLabel,
           hintStyle: context.textTheme.bodyLarge!.copyWith(
             fontSize: FontSizes.bodyLarge,
             color: context.isDarkMode

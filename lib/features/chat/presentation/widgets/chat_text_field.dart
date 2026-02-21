@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lara_ai/features/chat/presentation/cubit/lara_settings/lara_settings_cubit.dart';
+import 'package:lara_ai/features/chat/presentation/widgets/lara_settings_sheet.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/theme_extension.dart';
 import '../../../../l10n/extension_localizations.dart';
 import '../cubit/chat_cubit.dart';
@@ -19,6 +21,17 @@ class ChatTextField extends StatefulWidget {
 }
 
 class _ChatTextFieldState extends State<ChatTextField> {
+  final _settingsCubit = Modular.get<LaraSettingsCubit>();
+
+  void _showSettings() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => LaraSettingsSheet(cubit: _settingsCubit),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final vm = widget.vm;
@@ -39,7 +52,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: _showSettings,
                   icon: const Icon(LucideIcons.settings),
                 ),
                 Expanded(
@@ -48,9 +61,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
                     keyboardType: TextInputType.multiline,
                     minLines: 1,
                     maxLines: 5,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textOnDark,
-                    ),
+                    style: context.textTheme.bodyMedium,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: context.localization!.chat_inputHint,
@@ -62,7 +73,9 @@ class _ChatTextFieldState extends State<ChatTextField> {
                   bloc: cubit,
                   builder: (context, state) {
                     return IconButton(
-                      onPressed: vm.isTyping ? null : vm.sendMessage,
+                      onPressed: vm.isTyping
+                          ? null
+                          : () => vm.sendMessage(context),
                       icon: vm.isTyping
                           ? SizedBox(
                               width: 18.w,

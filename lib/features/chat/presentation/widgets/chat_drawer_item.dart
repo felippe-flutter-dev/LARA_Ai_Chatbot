@@ -3,15 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lara_ai/core/constants/font_sizes.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
 import 'package:lara_ai/features/chat/domain/entities/conversation_list_item.dart';
-import 'package:lara_ai/l10n/extension_localizations.dart';
+import 'package:lara_ai/features/chat/presentation/pages/chat_view/chat_view_model.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class ChatDrawerItem extends StatelessWidget {
   final ConversationListItem conversation;
+  final ChatViewModel vm;
   final Function()? onTap;
 
-  const ChatDrawerItem(this.conversation, {super.key, required this.onTap});
+  const ChatDrawerItem(
+    this.conversation, {
+    super.key,
+    required this.vm,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +82,7 @@ class ChatDrawerItem extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 8.h),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),
@@ -85,23 +91,10 @@ class ChatDrawerItem extends StatelessWidget {
   }
 
   Widget _buildTextTime(int time, BuildContext context) {
-    final now = DateTime.now();
-    final difference = now.difference(
-      DateTime.fromMillisecondsSinceEpoch(time),
-    );
-    String formattedTime = '';
-    final Color color = context.isDarkMode
+    final formattedTime = vm.formatRelativeTime(time, context);
+    final color = context.isDarkMode
         ? AppColors.surfaceOverlay
         : AppColors.gray200;
-    if (difference.inDays >= 1) {
-      formattedTime = context.localization!.time_days(difference.inDays);
-    } else if (difference.inHours >= 1) {
-      formattedTime = context.localization!.time_hours(difference.inHours);
-    } else if (difference.inMinutes >= 1) {
-      formattedTime = context.localization!.time_minutes(difference.inMinutes);
-    } else {
-      formattedTime = context.localization!.time_just_now;
-    }
 
     return Row(
       children: [

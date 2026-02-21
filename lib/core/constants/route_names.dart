@@ -6,7 +6,8 @@ class RouteNames {
 
   //**************** Page Route ****************
   // AUTH SCOP
-  static String get loginPage => '/';
+  static String get splashPage => '/';
+  static String get loginPage => '/login-page';
   static String get emailPage => '/email-page';
   static String get biometricLogin => '/biometric-login';
 

@@ -10,7 +10,6 @@
   "common_errorGeneric": "Ocorreu um erro. Por favor, tente novamente.",
   "common_deleteSuccessMessage": "Excluído com sucesso!",
 
-
   "@@__LOGIN__": "--- Login Screen ---",
   "login_welcomeTitle": "Bem-vindo à LARA",
   "login_welcomeSubtitle": "Sua parceira de IA com senso de humor 😉",
@@ -21,12 +20,23 @@
   "login_footerAnd": " e ",
   "login_footerPrivacy": "Política de Privacidade",
 
-  "@@__EMAIL_LINK__": "--- Passwordless Login Screen ---",
-  "email_instructionTitle": "Vamos começar. Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.",
-  "email_fieldLabel": "Endereço de e-mail",
-  "email_fieldHint": "ex: alex@empresa.com",
-  "email_spamWarning": "Verifique sua caixa de entrada (e spam) após clicar. O link é válido por 10 minutos.",
-  "email_buttonSend": "Enviar E-mail",
+  "@@__AUTH__": "--- Auth ---",
+  "auth_loginEmailTitle": "Login com E-mail",
+  "auth_registerTitle": "Crie sua conta",
+  "auth_emailLabel": "E-mail",
+  "auth_passwordLabel": "Senha",
+  "auth_confirmPasswordLabel": "Confirmar Senha",
+  "auth_buttonLogin": "Entrar",
+  "auth_buttonRegister": "Cadastrar",
+  "auth_noAccount": "Não tem uma conta? ",
+  "auth_registerLink": "Cadastre-se",
+  "auth_registerSuccess": "Cadastro realizado com sucesso! Faça login.",
+  "auth_error_userNotFound": "Usuário não encontrado. Verifique seu e-mail.",
+  "auth_error_wrongPassword": "Senha incorreta. Tente novamente.",
+  "auth_error_emailInUse": "Este e-mail já está em uso por outra conta.",
+  "auth_error_invalidEmail": "O formato do e-mail é inválido.",
+  "auth_error_weakPassword": "A senha é muito fraca. Use pelo menos 6 caracteres.",
+  "auth_error_network": "Erro de conexão. Verifique sua internet.",
 
   "@@__BIOMETRICS__": "--- Biometrics & Security ---",
   "bio_welcomeBack": "Bom te ver de novo!",
@@ -42,6 +52,7 @@
   "bio_systemSubtitle": "A LARA precisa ter certeza de que é você antes de continuarmos nosso papo.",
   "bio_fingerprintHint": "Toque no sensor de digital",
   "bio_usePassword": "Usar Senha",
+  "bio_errorAuth": "Falha na autenticação biométrica. Tente novamente.",
 
   "@@__DRAWER__": "--- Conversations Drawer ---",
   "drawer_title": "Conversas",
@@ -55,6 +66,17 @@
   "drawer_footerVersion": "LARA AI v1.0 • Feito com ❤️",
 
   "@@__CHAT__": "--- Chat Interaction ---",
-  "chat_inputHint": "Mensagem para LARA...",
-  "chat_initialGreeting": "Olá! 👋 Eu sou a LARA, sua assistente inteligente. Em que posso te ajudar (ou te fazer rir) hoje?"
+  "chat_inputHint": "Digite aqui...",
+  "chat_initialGreeting": "Olá! 👋 Eu sou a LARA, sua assistente inteligente. Em que posso te ajudar (ou te fazer rir) hoje?",
+  "chat_settingsTitle": "Configurações da LARA",
+  "chat_personalityLabel": "Personalidade",
+  "chat_personalityNormal": "Normal",
+  "chat_personalityConcise": "Concisa",
+  "chat_personalitySarcastic": "Sarcástica",
+  "chat_temperatureLabel": "Temperatura",
+  "chat_maxTokensLabel": "Máximo de Caracteres",
+  "chat_buttonSaveSettings": "Salvar Configurações",
+  "chat_retryMessage": "Erro na resposta. Tentar novamente?",
+
+  "made_with_love": "Feito com ❤️ por Felippe Pinheiro"
 }

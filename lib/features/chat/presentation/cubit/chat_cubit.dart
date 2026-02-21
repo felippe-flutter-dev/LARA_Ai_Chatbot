@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:lara_ai/core/data/services/auth_service.dart';
+import 'package:lara_ai/core/errors/ai_error_handler.dart';
 import 'package:lara_ai/features/chat/domain/repositories/i_chat_repository.dart';
 import '../../domain/entities/chat_message.dart';
 import 'chat_states.dart';
@@ -9,56 +11,24 @@ import 'chat_stream_handler.dart';
 
 class ChatCubit extends Cubit<ChatState> {
   final IChatRepositoryCustom repository;
+  final AuthService _authService;
   final ChatStreamHandler _handler;
 
   final List<ChatMessage> _messages = [];
 
-  ChatCubit(this.repository)
+  ChatCubit(this.repository, this._authService)
     : _handler = ChatStreamHandler(repository),
       super(ChatInitial()) {
-    // try to warm up chat session to reduce first-response latency
     try {
       repository.initChat();
     } catch (e) {
       if (kDebugMode) debugPrint('initChat failed: $e');
     }
 
-    // Ensure there's at least one conversation (run async)
-    Future.microtask(() async {
-      try {
-        final convos = await repository.listConversations();
-        if (convos.isEmpty) {
-          final id = await repository.createConversation('Nova conversa');
-          await repository.selectConversation(id);
-          if (kDebugMode) {
-            debugPrint('[ChatCubit] created default conversation id=$id');
-          }
-          // load messages (likely empty)
-          final msgs = await repository.loadConversationMessages(id);
-          _messages
-            ..clear()
-            ..addAll(msgs);
-          emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
-        } else {
-          // select the most recent conversation
-          final firstId = convos.first.id;
-          await repository.selectConversation(firstId);
-          final msgs = await repository.loadConversationMessages(firstId);
-          _messages
-            ..clear()
-            ..addAll(msgs);
-          emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
-          if (kDebugMode) {
-            debugPrint(
-              '[ChatCubit] selected conversation id=${convos.first.id}',
-            );
-          }
-        }
-      } catch (e) {
-        if (kDebugMode) debugPrint('[ChatCubit] conversation init error: $e');
-      }
-    });
+    Future.microtask(() => newEmptyConversation());
   }
+
+  String? get _userId => _authService.currentUser?.uid;
 
   Future<void> newEmptyConversation() async {
     repository.resetCurrentConversation();
@@ -67,13 +37,12 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   Future<void> sendMessage(String text) async {
-    if (text.trim().isEmpty) return;
+    if (text.trim().isEmpty || _userId == null) return;
 
-    // Ensure a conversation exists; if not, create one with title snippet from first message
     try {
       if (repository.currentConversationId == null) {
         final snippet = _makeSnippet(text);
-        final id = await repository.createConversation(snippet);
+        final id = await repository.createConversation(snippet, _userId!);
         await repository.selectConversation(id);
       }
     } catch (e) {
@@ -87,7 +56,7 @@ class ChatCubit extends Cubit<ChatState> {
       text,
       onChunkReceived: (fullText) => _updateLastAIMessage(fullText),
       onComplete: (fullText) => _finalizeLastAIMessage(fullText),
-      onError: (error) => _handleError(error), // ← MUDE PARA ISSO
+      onError: (error) => _handleError(error),
     );
   }
 
@@ -97,14 +66,17 @@ class ChatCubit extends Cubit<ChatState> {
     return '${trimmed.substring(0, maxLen).trim()}...';
   }
 
-  // ── Métodos privados simples ──
   void _addUserMessage(String text) {
-    _messages.add(ChatMessage(text: text, isUser: true));
+    _messages.add(
+      ChatMessage(text: text, isUser: true, timestamp: DateTime.now()),
+    );
     emit(ChatUpdated(messages: List.from(_messages), isTyping: true));
   }
 
   void _showTypingPlaceholder() {
-    _messages.add(ChatMessage(text: '...', isUser: false));
+    _messages.add(
+      ChatMessage(text: '...', isUser: false, timestamp: DateTime.now()),
+    );
     emit(ChatUpdated(messages: List.from(_messages), isTyping: true));
   }
 
@@ -113,6 +85,7 @@ class ChatCubit extends Cubit<ChatState> {
       _messages[_messages.length - 1] = ChatMessage(
         text: fullText,
         isUser: false,
+        timestamp: DateTime.now(),
       );
     }
     emit(ChatUpdated(messages: List.from(_messages), isTyping: true));
@@ -123,6 +96,7 @@ class ChatCubit extends Cubit<ChatState> {
       _messages[_messages.length - 1] = ChatMessage(
         text: fullText,
         isUser: false,
+        timestamp: DateTime.now(),
       );
     }
     emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
@@ -135,7 +109,6 @@ class ChatCubit extends Cubit<ChatState> {
       await repository.updateLastMessage(currentId, preview);
     }
 
-    // If conversation had no meaningful title, update it from first user message
     try {
       final currentId = repository.currentConversationId;
       if (currentId != null) {
@@ -159,26 +132,33 @@ class ChatCubit extends Cubit<ChatState> {
     }
   }
 
-  void _handleError(String error) {
-    // Remove o placeholder de "..."
+  void _handleError(dynamic error) {
     if (_messages.isNotEmpty && _messages.last.text == '...') {
       _messages.removeLast();
     }
+    if (_messages.isNotEmpty && _messages.last.isUser) {
+      _messages.removeLast();
+    }
+
+    final String userFriendlyError = AiErrorHandler.handle(error);
+
     emit(
       ChatError(
-        'Erro na resposta: $error',
+        userFriendlyError,
         messages: List.from(_messages),
         isTyping: false,
       ),
     );
   }
 
-  // Optional: expose conversation helpers
-  Future<List> listConversations() async =>
-      await repository.listConversations();
+  Future<List> listConversations() async {
+    if (_userId == null) return [];
+    return await repository.listConversations(_userId!);
+  }
 
   Future<int> createConversation(String title) async {
-    final id = await repository.createConversation(title);
+    if (_userId == null) throw Exception("User not logged in");
+    final id = await repository.createConversation(title, _userId!);
     await repository.selectConversation(id);
     final msgs = await repository.loadConversationMessages(id);
     _messages
@@ -198,9 +178,10 @@ class ChatCubit extends Cubit<ChatState> {
   }
 
   Future<void> deleteConversation(int id) async {
+    final isDeletingCurrent = repository.currentConversationId == id;
     await repository.deleteConversation(id);
-    // if current messages belong to deleted conversation, clear
-    _messages.clear();
-    emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
+    if (isDeletingCurrent) {
+      await newEmptyConversation();
+    }
   }
 }

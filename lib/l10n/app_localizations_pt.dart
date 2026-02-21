@@ -56,21 +56,35 @@ class AppLocalizationsPt extends AppLocalizations {
   String get login_footerPrivacy => 'Política de Privacidade';
 
   @override
-  String get email_instructionTitle =>
-      'Vamos começar. Digite seu e-mail abaixo para receber um link de acesso seguro, sem senha.';
+  String get auth_loginEmailTitle => 'Login com E-mail';
 
   @override
-  String get email_fieldLabel => 'Endereço de e-mail';
+  String get auth_registerTitle => 'Crie sua conta';
 
   @override
-  String get email_fieldHint => 'ex: alex@empresa.com';
+  String get auth_emailLabel => 'E-mail';
 
   @override
-  String get email_spamWarning =>
-      'Verifique sua caixa de entrada (e spam) após clicar. O link é válido por 10 minutos.';
+  String get auth_passwordLabel => 'Senha';
 
   @override
-  String get email_buttonSend => 'Enviar E-mail';
+  String get auth_confirmPasswordLabel => 'Confirmar Senha';
+
+  @override
+  String get auth_buttonLogin => 'Entrar';
+
+  @override
+  String get auth_buttonRegister => 'Cadastrar';
+
+  @override
+  String get auth_noAccount => 'Não tem uma conta? ';
+
+  @override
+  String get auth_registerLink => 'Cadastre-se';
+
+  @override
+  String get auth_registerSuccess =>
+      'Cadastro realizado com sucesso! Faça login.';
 
   @override
   String get bio_welcomeBack => 'Bom te ver de novo!';
@@ -113,6 +127,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get bio_usePassword => 'Usar Senha';
+
+  @override
+  String get bio_errorAuth =>
+      'Falha na autenticação biométrica. Tente novamente.';
 
   @override
   String get drawer_title => 'Conversas';
@@ -166,9 +184,39 @@ class AppLocalizationsPt extends AppLocalizations {
   String get drawer_footerVersion => 'LARA AI v1.0 • Feito com ❤️';
 
   @override
-  String get chat_inputHint => 'Mensagem para LARA...';
+  String get chat_inputHint => 'Digite aqui...';
 
   @override
   String get chat_initialGreeting =>
       'Olá! 👋 Eu sou a LARA, sua assistente inteligente. Em que posso te ajudar (ou te fazer rir) hoje?';
+
+  @override
+  String get chat_settingsTitle => 'Configurações da LARA';
+
+  @override
+  String get chat_personalityLabel => 'Personalidade';
+
+  @override
+  String get chat_personalityNormal => 'Normal';
+
+  @override
+  String get chat_personalityConcise => 'Concisa';
+
+  @override
+  String get chat_personalitySarcastic => 'Sarcástica';
+
+  @override
+  String get chat_temperatureLabel => 'Temperatura';
+
+  @override
+  String get chat_maxTokensLabel => 'Máximo de Caracteres';
+
+  @override
+  String get chat_buttonSaveSettings => 'Salvar Configurações';
+
+  @override
+  String get chat_retryMessage => 'Erro na resposta. Tentar novamente?';
+
+  @override
+  String get made_with_love => 'Feito com ❤️ por Felippe Pinheiro';
 }

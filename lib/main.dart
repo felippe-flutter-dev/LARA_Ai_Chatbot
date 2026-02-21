@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +32,6 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       enableScaleText: () => true,
       ensureScreenSize: true,
-      fontSizeResolver: (size, util) => size * min(util.textScaleFactor, 1.4),
       builder: (context, child) => ModularApp(
         module: MainModule(),
         child: MaterialApp.router(
@@ -46,6 +43,18 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           routerDelegate: Modular.routerDelegate,
           routeInformationParser: Modular.routeInformationParser,
+          builder: (context, child) {
+            final mediaQuery = MediaQuery.of(context);
+
+            final systemScale = mediaQuery.textScaler.scale(1.0);
+
+            return MediaQuery(
+              data: mediaQuery.copyWith(
+                textScaler: TextScaler.linear(systemScale.clamp(1.0, 1.5)),
+              ),
+              child: child!,
+            );
+          },
         ),
       ),
       child: SizedBox.shrink(),
