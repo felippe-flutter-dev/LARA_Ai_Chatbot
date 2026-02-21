@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(393, 852),
+      minTextAdapt: true,
+      enableScaleText: () => true,
+      ensureScreenSize: true,
+      fontSizeResolver: (size, util) => size * min(util.textScaleFactor, 1.4),
       builder: (context, child) => ModularApp(
         module: MainModule(),
         child: MaterialApp.router(
