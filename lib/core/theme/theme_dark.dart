@@ -33,20 +33,27 @@ class AppThemeDark {
         ),
       ),
       textTheme: TextTheme(
+        /// [FontSizes.headlineLarge]
         headlineLarge: TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.w900,
           color: AppColors.textOnDark,
         ),
+
+        /// [FontSizes.headlineMedium]
         headlineMedium: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.w700,
           color: AppColors.primaryMain,
         ),
+
+        /// [FontSizes.bodyLarge]
         bodyLarge: TextStyle(
           fontSize: 16,
           color: AppColors.textOnDark.withValues(alpha: 0.9),
         ),
+
+        /// [FontSizes.bodySmall]
         bodySmall: TextStyle(fontSize: 12, color: AppColors.gray400),
       ),
       cardTheme: CardThemeData(
