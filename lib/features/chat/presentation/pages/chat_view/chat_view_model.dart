@@ -9,7 +9,6 @@ import '../../cubit/chat_states.dart';
 class ChatViewModel {
   final ChatCubit cubit;
 
-  // Controllers que a View vai usar
   final TextEditingController textController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
@@ -20,17 +19,26 @@ class ChatViewModel {
   // ─────────────────────────────────────────────────────────────
   List<ChatMessage> get messages {
     final state = cubit.state;
-    return state is ChatUpdated ? state.messages : [];
+    if (state is ChatUpdated) return state.messages;
+    if (state is ChatError) return state.messages; // ← ADICIONE
+    return [];
   }
 
   bool get isTyping {
     final state = cubit.state;
-    return state is ChatUpdated ? state.isTyping : false;
+    if (state is ChatUpdated) return state.isTyping;
+    if (state is ChatError) return state.isTyping; // ← ADICIONE
+    return false;
   }
 
   // ─────────────────────────────────────────────────────────────
   // Ações da tela (View chama isso)
   // ─────────────────────────────────────────────────────────────
+  Future<void> newEmptyConversation() async {
+    await cubit.newEmptyConversation();
+    scrollToBottom();
+  }
+
   void sendMessage() {
     final text = textController.text.trim();
     if (text.isEmpty) return;
@@ -57,6 +65,10 @@ class ChatViewModel {
     await cubit.selectConversation(id);
     // load messages happens inside cubit; ensure UI scrolls to bottom
     scrollToBottom(duration: const Duration(milliseconds: 120));
+  }
+
+  Future<void> deleteConversation(int id) async {
+    await cubit.deleteConversation(id);
   }
 
   void scrollToBottom({Duration duration = const Duration(milliseconds: 250)}) {

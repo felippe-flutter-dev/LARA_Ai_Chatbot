@@ -20,13 +20,15 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2, // ← alterado
       onCreate: (db, version) async {
         await db.execute('''
         CREATE TABLE conversations(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           title TEXT,
-          createdAt INTEGER
+          lastMessage TEXT,
+          createdAt INTEGER,
+          updateAt INTEGER
         )
       ''');
 
@@ -40,6 +42,16 @@ class AppDatabase {
           FOREIGN KEY(conversationId) REFERENCES conversations(id) ON DELETE CASCADE
         )
       ''');
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute(
+            'ALTER TABLE conversations ADD COLUMN lastMessage TEXT DEFAULT ""',
+          );
+          await db.execute(
+            'ALTER TABLE conversations ADD COLUMN updateAt INTEGER DEFAULT 0',
+          );
+        }
       },
     );
   }

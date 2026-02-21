@@ -5,6 +5,9 @@ import 'package:lara_ai/core/data/services/gemini_services.dart';
 import 'package:lara_ai/features/chat/data/repositories/chat_repository_impl.dart';
 import 'package:lara_ai/features/chat/presentation/cubit/chat_cubit.dart';
 import 'package:lara_ai/features/chat/presentation/pages/chat_view/chat_view.dart';
+import 'package:lara_ai/features/chat/presentation/pages/chat_view/chat_view_model.dart';
+
+import '../domain/repositories/i_chat_repository.dart';
 
 class ChatModule extends Module {
   @override
@@ -13,8 +16,11 @@ class ChatModule extends Module {
     i.addLazySingleton<GeminiChatService>(
       () => GeminiChatService(apiKey: dotenv.env['API_KEY']!),
     );
-    i.addLazySingleton<ChatRepositoryImpl>(ChatRepositoryImpl.new);
+    i.addLazySingleton<IChatRepositoryCustom>(
+      () => ChatRepositoryImpl(i.get<GeminiChatService>()),
+    );
     i.addLazySingleton<ChatCubit>(ChatCubit.new);
+    i.addLazySingleton<ChatViewModel>(ChatViewModel.new);
   }
 
   @override

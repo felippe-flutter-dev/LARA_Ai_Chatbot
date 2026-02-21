@@ -134,6 +134,12 @@ abstract class AppLocalizations {
   /// **'An error occurred. Please try again.'**
   String get common_errorGeneric;
 
+  /// No description provided for @common_deleteSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted successfully!'**
+  String get common_deleteSuccessMessage;
+
   /// No description provided for @login_welcomeTitle.
   ///
   /// In en, this message translates to:
@@ -302,11 +308,11 @@ abstract class AppLocalizations {
   /// **'New Chat'**
   String get drawer_buttonNewChat;
 
-  /// No description provided for @drawer_chatTitleDefault.
+  /// No description provided for @drawer_emptyConversations.
   ///
   /// In en, this message translates to:
-  /// **'Recipe Ideas'**
-  String get drawer_chatTitleDefault;
+  /// **'No conversations yet'**
+  String get drawer_emptyConversations;
 
   /// No description provided for @drawer_chatSubtitleDefault.
   ///
@@ -314,11 +320,29 @@ abstract class AppLocalizations {
   /// **'Can you suggest some healthy di...'**
   String get drawer_chatSubtitleDefault;
 
-  /// No description provided for @drawer_timeAgo.
+  /// No description provided for @time_days.
   ///
   /// In en, this message translates to:
-  /// **'{time} ago'**
-  String drawer_timeAgo(String time);
+  /// **'{count, plural, =1{1 day ago} other{{count} days ago}}'**
+  String time_days(num count);
+
+  /// No description provided for @time_hours.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 hour ago} other{{count} hours ago}}'**
+  String time_hours(num count);
+
+  /// No description provided for @time_minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 minute ago} other{{count} minutes ago}}'**
+  String time_minutes(num count);
+
+  /// No description provided for @time_just_now.
+  ///
+  /// In en, this message translates to:
+  /// **'just now'**
+  String get time_just_now;
 
   /// No description provided for @drawer_footerVersion.
   ///

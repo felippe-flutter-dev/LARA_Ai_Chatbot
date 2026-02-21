@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lara_ai/core/constants/font_sizes.dart';
-import 'package:lara_ai/core/constants/navigation_route_names.dart';
-import 'package:lara_ai/core/constants/route_names.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/google_login_button.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
 import 'package:lara_ai/features/auth/presentation/widgets/filled_buttom_custom.dart';
 import 'package:lara_ai/l10n/extension_localizations.dart';
+
+import '../../../../../core/constants/navigation_route_names.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -48,8 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Expanded(
                     child: GoogleLoginButton(
-                      onPressed: () =>
-                          Modular.to.pushNamed(RouteNames.biometricLogin),
+                      // Use default onPressed (calls AuthService.signInWithGoogle)
                     ),
                   ),
                 ],
@@ -58,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               FilledButtonCustom(
                 text: context.localization!.login_buttonEmail,
                 onPressed: () {
-                  Modular.to.pushNamed(NavigationRouteNames.toEmailLoginPage);
+                  Modular.to.pushNamed(NavigationRouteNames.toChatPage);
                 },
               ),
               SizedBox(height: 40.h),

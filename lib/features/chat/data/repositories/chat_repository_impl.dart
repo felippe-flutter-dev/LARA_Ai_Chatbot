@@ -21,6 +21,11 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
   }
 
   @override
+  void resetCurrentConversation() {
+    _currentConversationId = null;
+  }
+
+  @override
   Future<List<Conversation>> listConversations() async {
     final rows = await _dao.listConversations();
     return rows
@@ -28,7 +33,9 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
           (r) => Conversation(
             id: r.id ?? 0,
             title: r.title,
+            lastMessage: r.lastMessage,
             createdAt: r.createdAt,
+            updateAt: r.updateAt,
           ),
         )
         .toList();
@@ -112,6 +119,11 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
     return rows
         .map((m) => ChatMessage(text: m.text, isUser: m.isUser))
         .toList();
+  }
+
+  @override
+  Future<void> updateLastMessage(int conversationId, String lastMessage) async {
+    await _dao.updateLastMessage(conversationId, lastMessage);
   }
 
   // New helpers

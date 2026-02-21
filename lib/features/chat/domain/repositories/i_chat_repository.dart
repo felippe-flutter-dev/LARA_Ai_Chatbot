@@ -18,8 +18,10 @@ abstract class IChatRepositoryCustom {
 
   // Conversation management
   Future<int> createConversation(String title);
+  void resetCurrentConversation();
   Future<List<Conversation>> listConversations();
   Future<List<ChatMessage>> loadConversationMessages(int conversationId);
+  Future<void> updateLastMessage(int conversationId, String lastMessage);
   Future<void> deleteConversation(int conversationId);
   Future<void> selectConversation(int conversationId);
 

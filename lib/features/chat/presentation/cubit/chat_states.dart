@@ -15,5 +15,8 @@ class ChatUpdated extends ChatState {
 
 class ChatError extends ChatState {
   final String message;
-  ChatError(this.message);
+  final List<ChatMessage> messages; // ← NOVO
+  final bool isTyping;
+
+  ChatError(this.message, {required this.messages, this.isTyping = false});
 }

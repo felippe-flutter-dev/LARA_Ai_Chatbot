@@ -1,15 +1,13 @@
-class Conversation {
+class ConversationListItem {
   final int id;
   final String title;
   final String lastMessage;
-  final int createdAt;
-  final int updateAt;
+  final int lastMessageDate;
 
-  Conversation({
+  ConversationListItem({
     required this.id,
     required this.title,
     required this.lastMessage,
-    required this.createdAt,
-    required this.updateAt,
+    required this.lastMessageDate,
   });
 }

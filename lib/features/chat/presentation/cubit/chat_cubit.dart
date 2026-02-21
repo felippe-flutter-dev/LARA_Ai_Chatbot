@@ -60,6 +60,12 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
+  Future<void> newEmptyConversation() async {
+    repository.resetCurrentConversation();
+    _messages.clear();
+    emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
+  }
+
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
 
@@ -81,7 +87,7 @@ class ChatCubit extends Cubit<ChatState> {
       text,
       onChunkReceived: (fullText) => _updateLastAIMessage(fullText),
       onComplete: (fullText) => _finalizeLastAIMessage(fullText),
-      onError: (error) => emit(ChatError('Erro na resposta: $error')),
+      onError: (error) => _handleError(error), // ← MUDE PARA ISSO
     );
   }
 
@@ -121,6 +127,14 @@ class ChatCubit extends Cubit<ChatState> {
     }
     emit(ChatUpdated(messages: List.from(_messages), isTyping: false));
 
+    final currentId = repository.currentConversationId;
+    if (currentId != null && fullText.isNotEmpty) {
+      final preview = fullText.length > 70
+          ? '${fullText.substring(0, 67)}...'
+          : fullText;
+      await repository.updateLastMessage(currentId, preview);
+    }
+
     // If conversation had no meaningful title, update it from first user message
     try {
       final currentId = repository.currentConversationId;
@@ -143,6 +157,20 @@ class ChatCubit extends Cubit<ChatState> {
     } catch (e) {
       if (kDebugMode) debugPrint('failed to update conversation title: $e');
     }
+  }
+
+  void _handleError(String error) {
+    // Remove o placeholder de "..."
+    if (_messages.isNotEmpty && _messages.last.text == '...') {
+      _messages.removeLast();
+    }
+    emit(
+      ChatError(
+        'Erro na resposta: $error',
+        messages: List.from(_messages),
+        isTyping: false,
+      ),
+    );
   }
 
   // Optional: expose conversation helpers

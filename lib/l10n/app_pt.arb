@@ -8,6 +8,8 @@
   "common_buttonBack": "Voltar",
   "common_loading": "Carregando...",
   "common_errorGeneric": "Ocorreu um erro. Por favor, tente novamente.",
+  "common_deleteSuccessMessage": "Excluído com sucesso!",
+
 
   "@@__LOGIN__": "--- Login Screen ---",
   "login_welcomeTitle": "Bem-vindo à LARA",
@@ -44,17 +46,12 @@
   "@@__DRAWER__": "--- Conversations Drawer ---",
   "drawer_title": "Conversas",
   "drawer_buttonNewChat": "Novo Chat",
-  "drawer_chatTitleDefault": "Ideias de Receitas",
+  "drawer_emptyConversations": "Nenhuma conversa ainda",
   "drawer_chatSubtitleDefault": "Pode sugerir algumas di...",
-  "drawer_timeAgo": "há {time}",
-  "@drawer_timeAgo": {
-    "placeholders": {
-      "time": {
-        "type": "String",
-        "example": "2 horas"
-      }
-    }
-  },
+  "time_days": "{count, plural, =1{há 1 dia} other{há {count} dias}}",
+  "time_hours": "{count, plural, =1{há 1 hora} other{há {count} horas}}",
+  "time_minutes": "{count, plural, =1{há 1 minuto} other{há {count} minutos}}",
+  "time_just_now": "agora mesmo",
   "drawer_footerVersion": "LARA AI v1.0 • Feito com ❤️",
 
   "@@__CHAT__": "--- Chat Interaction ---",

@@ -8,14 +8,16 @@ class ConversationDao {
     final db = await _db.database;
     final id = await db.insert('conversations', {
       'title': title,
+      'lastMessage': '',
       'createdAt': DateTime.now().millisecondsSinceEpoch,
+      'updateAt': DateTime.now().millisecondsSinceEpoch,
     });
     return id;
   }
 
   Future<List<ConversationEntity>> listConversations() async {
     final db = await _db.database;
-    final rows = await db.query('conversations', orderBy: 'createdAt DESC');
+    final rows = await db.query('conversations', orderBy: 'updateAt DESC');
     return rows.map((r) => ConversationEntity.fromMap(r)).toList();
   }
 
@@ -57,7 +59,20 @@ class ConversationDao {
     final db = await _db.database;
     await db.update(
       'conversations',
-      {'title': title},
+      {'title': title, 'updateAt': DateTime.now().millisecondsSinceEpoch},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> updateLastMessage(int id, String message) async {
+    final db = await _db.database;
+    await db.update(
+      'conversations',
+      {
+        'lastMessage': message,
+        'updateAt': DateTime.now().millisecondsSinceEpoch,
+      },
       where: 'id = ?',
       whereArgs: [id],
     );

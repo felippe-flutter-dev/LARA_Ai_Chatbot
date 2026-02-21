@@ -1,21 +1,33 @@
 class ConversationEntity {
   final int? id;
   final String title;
+  final String lastMessage;
   final int createdAt;
+  final int updateAt;
 
-  ConversationEntity({this.id, required this.title, required this.createdAt});
+  ConversationEntity({
+    this.id,
+    required this.title,
+    required this.lastMessage,
+    required this.createdAt,
+    required this.updateAt,
+  });
 
   Map<String, Object?> toMap() => {
     if (id != null) 'id': id,
     'title': title,
+    'lastMessage': lastMessage,
     'createdAt': createdAt,
+    'updateAt': updateAt,
   };
 
   static ConversationEntity fromMap(Map<String, Object?> map) =>
       ConversationEntity(
         id: map['id'] as int?,
         title: map['title'] as String? ?? '',
+        lastMessage: map['lastMessage'] as String? ?? '',
         createdAt: map['createdAt'] as int? ?? 0,
+        updateAt: map['updateAt'] as int? ?? 0,
       );
 }
 

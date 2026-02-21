@@ -28,6 +28,9 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ocorreu um erro. Por favor, tente novamente.';
 
   @override
+  String get common_deleteSuccessMessage => 'Excluído com sucesso!';
+
+  @override
   String get login_welcomeTitle => 'Bem-vindo à LARA';
 
   @override
@@ -118,15 +121,46 @@ class AppLocalizationsPt extends AppLocalizations {
   String get drawer_buttonNewChat => 'Novo Chat';
 
   @override
-  String get drawer_chatTitleDefault => 'Ideias de Receitas';
+  String get drawer_emptyConversations => 'Nenhuma conversa ainda';
 
   @override
   String get drawer_chatSubtitleDefault => 'Pode sugerir algumas di...';
 
   @override
-  String drawer_timeAgo(String time) {
-    return 'há $time';
+  String time_days(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'há $count dias',
+      one: 'há 1 dia',
+    );
+    return '$_temp0';
   }
+
+  @override
+  String time_hours(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'há $count horas',
+      one: 'há 1 hora',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String time_minutes(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'há $count minutos',
+      one: 'há 1 minuto',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get time_just_now => 'agora mesmo';
 
   @override
   String get drawer_footerVersion => 'LARA AI v1.0 • Feito com ❤️';

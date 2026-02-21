@@ -3,3 +3,4 @@ package com.futuretech.lara.lara_ai
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : FlutterActivity()
+
