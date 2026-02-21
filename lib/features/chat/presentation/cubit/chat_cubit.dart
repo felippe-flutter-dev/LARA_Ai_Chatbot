@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lara_ai/features/chat/domain/repositories/i_chat_repository.dart';
-import '../../../domain/entities/chat_message.dart';
+import '../../domain/entities/chat_message.dart';
 import 'chat_states.dart';
 import 'chat_stream_handler.dart';
 

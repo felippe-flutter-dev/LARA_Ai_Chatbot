@@ -26,6 +26,11 @@ class AppThemeLight {
           borderRadius: BorderRadius.all(Radius.circular(18)),
         ),
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(AppColors.gray500),
+        ),
+      ),
       textTheme: TextTheme(
         headlineLarge: TextStyle(
           fontSize: 32,

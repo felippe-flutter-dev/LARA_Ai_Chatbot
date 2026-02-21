@@ -13,6 +13,9 @@ abstract class IChatRepositoryCustom {
   // Persist an AI message to current conversation
   Future<void> persistAiMessage(String text);
 
+  // Persist a user message to current conversation (only when AI responds)
+  Future<void> persistUserMessage(String text);
+
   // Conversation management
   Future<int> createConversation(String title);
   Future<List<Conversation>> listConversations();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
-import '../../../domain/entities/chat_message.dart'; // Ajuste o path conforme sua estrutura
+import '../../domain/entities/chat_message.dart'; // Ajuste o path conforme sua estrutura
 
 class ChatBubble extends StatelessWidget {
   final ChatMessage message;

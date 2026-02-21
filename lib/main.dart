@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:lara_ai/features/chat/data/presentation/pages/chat_view/chat_view.dart';
 import 'core/data/services/gemini_services.dart';
 import 'core/theme/theme_dark.dart';
 import 'core/theme/theme_light.dart';
-import 'features/chat/data/presentation/cubit/chat_cubit.dart';
 import 'features/chat/data/repositories/chat_repository_impl.dart';
+import 'features/chat/presentation/cubit/chat_cubit.dart';
+import 'features/chat/presentation/pages/chat_view/chat_view.dart';
 import 'firebase_options.dart';
+import 'l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,6 +49,8 @@ class MyApp extends StatelessWidget {
       theme: AppThemeLight.theme,
       darkTheme: AppThemeDark.theme,
       themeMode: ThemeMode.system,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       home: const ChatView(),
     );
   }

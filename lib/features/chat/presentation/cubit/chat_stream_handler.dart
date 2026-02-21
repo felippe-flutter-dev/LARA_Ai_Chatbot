@@ -53,6 +53,12 @@ class ChatStreamHandler {
           if (isFirstChunk) {
             _logTimeToFirstChunk(sendStart);
             isFirstChunk = false;
+            // Persist the user message only when the first chunk arrives
+            // (indicating the AI started responding)
+            repository.persistUserMessage(text).catchError((e) {
+              if (kDebugMode)
+                debugPrint('[StreamHandler] persist user error: $e');
+            });
           }
 
           fullResponse += chunk;
@@ -105,11 +111,12 @@ class ChatStreamHandler {
       final finalText = await repository.sendMessageOnce(text);
       // persist final
       try {
+        // Persist user message because fallback succeeded and returned final text
+        await repository.persistUserMessage(text);
         await repository.persistAiMessage(finalText);
       } catch (e) {
-        if (kDebugMode) {
+        if (kDebugMode)
           debugPrint('[StreamHandler] persist fallback error: $e');
-        }
       }
       onComplete(finalText);
     } catch (e) {

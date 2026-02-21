@@ -51,17 +51,8 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
 
   @override
   Stream<String> sendMessage(String message) async* {
-    // Persist user message
-    if (_currentConversationId != null) {
-      final m = MessageEntity(
-        conversationId: _currentConversationId!,
-        text: message,
-        isUser: true,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-      );
-      await _dao.addMessage(m);
-    }
-
+    // We no longer persist the user message here immediately. The handler will
+    // call persistUserMessage only after confirming the AI produced a response.
     await for (final chunk in _service.sendMessageStream(message)) {
       yield chunk;
     }
@@ -96,6 +87,19 @@ class ChatRepositoryImpl implements IChatRepositoryCustom {
         conversationId: _currentConversationId!,
         text: text,
         isUser: false,
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+      );
+      await _dao.addMessage(m);
+    }
+  }
+
+  @override
+  Future<void> persistUserMessage(String text) async {
+    if (_currentConversationId != null) {
+      final m = MessageEntity(
+        conversationId: _currentConversationId!,
+        text: text,
+        isUser: true,
         createdAt: DateTime.now().millisecondsSinceEpoch,
       );
       await _dao.addMessage(m);

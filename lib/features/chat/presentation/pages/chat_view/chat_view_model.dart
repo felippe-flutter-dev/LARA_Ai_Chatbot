@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/theme/app_assets.dart';
-import '../../../../domain/entities/chat_message.dart';
-import '../../../../domain/entities/conversation.dart';
+import '../../../domain/entities/chat_message.dart';
+import '../../../domain/entities/conversation.dart';
 import '../../cubit/chat_cubit.dart';
 import '../../cubit/chat_states.dart';
 

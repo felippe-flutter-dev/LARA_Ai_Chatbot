@@ -18,6 +18,11 @@ class AppThemeDark {
         // Superfície de cards/inputs
         onSurface: AppColors.textOnDark,
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll(AppColors.darkElevated),
+        ),
+      ),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.darkBg200,
         elevation: 4,
