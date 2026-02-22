@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Online'**
   String get common_onlineStatus;
 
+  /// No description provided for @common_offlineStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get common_offlineStatus;
+
   /// No description provided for @common_buttonBack.
   ///
   /// In en, this message translates to:

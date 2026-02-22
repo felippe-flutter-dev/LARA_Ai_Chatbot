@@ -28,7 +28,7 @@ class AppThemeLight {
       ),
       iconButtonTheme: IconButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(AppColors.gray500),
+          backgroundColor: WidgetStatePropertyAll(AppColors.gray100),
         ),
       ),
       textTheme: TextTheme(

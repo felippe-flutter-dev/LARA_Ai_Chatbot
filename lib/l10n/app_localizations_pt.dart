@@ -18,6 +18,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get common_onlineStatus => 'Online';
 
   @override
+  String get common_offlineStatus => 'Offline';
+
+  @override
   String get common_buttonBack => 'Voltar';
 
   @override

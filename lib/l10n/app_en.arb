@@ -5,6 +5,7 @@
   "common_appName": "LARA",
   "common_appSlogan": "Your AI sidekick with a sense of humor.",
   "common_onlineStatus": "Online",
+  "common_offlineStatus": "Offline",
   "common_buttonBack": "Back",
   "common_loading": "Loading...",
   "common_errorGeneric": "An error occurred. Please try again.",

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lara_ai/core/widgets/enable_biometrics_dialog.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/google_login_button.dart';
-import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
+import 'package:lara_ai/core/widgets/logo_app.dart';
 import 'package:lara_ai/features/chat/presentation/widgets/chat_text_field.dart';
 import 'package:lara_ai/main.dart' as app;
 import 'package:lucide_icons/lucide_icons.dart';

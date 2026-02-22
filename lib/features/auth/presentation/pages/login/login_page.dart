@@ -8,7 +8,7 @@ import 'package:lara_ai/features/auth/presentation/cubit/login/login_cubit.dart'
 import 'package:lara_ai/features/auth/presentation/cubit/login/login_states.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/login_view_model.dart';
 import 'package:lara_ai/features/auth/presentation/pages/login/widgets/google_login_button.dart';
-import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
+import 'package:lara_ai/core/widgets/logo_app.dart';
 import 'package:lara_ai/features/auth/presentation/widgets/filled_buttom_custom.dart';
 import 'package:lara_ai/l10n/extension_localizations.dart';
 

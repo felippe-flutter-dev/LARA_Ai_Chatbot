@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lara_ai/core/constants/route_names.dart';
 import 'package:lara_ai/core/data/services/auth_service.dart';
-import 'package:lara_ai/features/auth/presentation/pages/login/widgets/logo_app.dart';
+import 'package:lara_ai/core/widgets/logo_app.dart';
 import 'package:lara_ai/l10n/extension_localizations.dart';
 
 class SplashPage extends StatefulWidget {

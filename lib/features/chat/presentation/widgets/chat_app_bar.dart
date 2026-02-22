@@ -7,6 +7,7 @@ import 'package:lara_ai/core/theme/app_colors.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
 import 'package:lara_ai/features/auth/presentation/cubit/login/login_cubit.dart';
 import 'package:lara_ai/features/auth/presentation/cubit/login/login_states.dart';
+import 'package:lara_ai/features/chat/presentation/widgets/lara_appbar_icon.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class ChatAppBar extends StatefulWidget {
@@ -35,7 +36,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
             elevation: 4,
             shadowColor: Colors.black,
             toolbarHeight: 64.h,
-            title: const Text("LARA"),
+            title: LaraAppbarIcon(),
             centerTitle: true,
             actions: [
               IconButton(
@@ -44,7 +45,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                   LucideIcons.logOut,
                   color: context.isDarkMode
                       ? AppColors.textOnDark
-                      : AppColors.gray500,
+                      : AppColors.gray900,
                 ),
               ),
             ],
