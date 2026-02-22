@@ -1,3 +1,5 @@
+import 'package:lara_ai/core/errors/ai_error/ai_error_type.dart';
+
 import '../../domain/entities/chat_message.dart';
 
 abstract class ChatState {}
@@ -14,9 +16,9 @@ class ChatUpdated extends ChatState {
 }
 
 class ChatError extends ChatState {
-  final String message;
+  final AiErrorType errorType;
   final List<ChatMessage> messages; // ← NOVO
   final bool isTyping;
 
-  ChatError(this.message, {required this.messages, this.isTyping = false});
+  ChatError(this.errorType, {required this.messages, this.isTyping = false});
 }

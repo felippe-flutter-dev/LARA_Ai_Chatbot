@@ -146,6 +146,108 @@ abstract class AppLocalizations {
   /// **'Deleted successfully!'**
   String get common_deleteSuccessMessage;
 
+  /// No description provided for @errorSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Oops! This topic is a bit sensitive for me and I can\'t answer it. Shall we talk about something else?'**
+  String get errorSafety;
+
+  /// No description provided for @errorQuota.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m a bit overwhelmed with requests right now. Could you try again in a minute?'**
+  String get errorQuota;
+
+  /// No description provided for @errorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like I lost my signal for a moment. Please check your connection and try asking me again!'**
+  String get errorNetwork;
+
+  /// No description provided for @errorConfig.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m having a technical issue with my settings (API key). Please let support know!'**
+  String get errorConfig;
+
+  /// No description provided for @errorInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'I had a small glitch processing your message. Could you try rewriting it a different way?'**
+  String get errorInvalid;
+
+  /// No description provided for @errorServer.
+  ///
+  /// In en, this message translates to:
+  /// **'My servers are undergoing quick maintenance. Please try again soon!'**
+  String get errorServer;
+
+  /// No description provided for @errorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'I had an internal hiccup and couldn\'t answer you just now. Can you try again?'**
+  String get errorUnknown;
+
+  /// No description provided for @authErrorUserNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found. Please check your email.'**
+  String get authErrorUserNotFound;
+
+  /// No description provided for @authErrorWrongPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect password. Please try again.'**
+  String get authErrorWrongPassword;
+
+  /// No description provided for @authErrorEmailInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already in use by another account.'**
+  String get authErrorEmailInUse;
+
+  /// No description provided for @authErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'The email format is invalid.'**
+  String get authErrorInvalidEmail;
+
+  /// No description provided for @authErrorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password is too weak. Use at least 6 characters.'**
+  String get authErrorWeakPassword;
+
+  /// No description provided for @authErrorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection error. Please check your internet.'**
+  String get authErrorNetwork;
+
+  /// No description provided for @authErrorTooManyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please try again later.'**
+  String get authErrorTooManyRequests;
+
+  /// No description provided for @authErrorUserDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'This account has been disabled.'**
+  String get authErrorUserDisabled;
+
+  /// No description provided for @authErrorOperationNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Email and password login is not enabled.'**
+  String get authErrorOperationNotAllowed;
+
+  /// No description provided for @authErrorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again.'**
+  String get authErrorUnknown;
+
   /// No description provided for @login_welcomeTitle.
   ///
   /// In en, this message translates to:
@@ -457,6 +559,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Response error. Try again?'**
   String get chat_retryMessage;
+
+  /// No description provided for @lara_settings_title.
+  ///
+  /// In en, this message translates to:
+  /// **'LARA Settings'**
+  String get lara_settings_title;
+
+  /// No description provided for @lara_settings_personality.
+  ///
+  /// In en, this message translates to:
+  /// **'Personality'**
+  String get lara_settings_personality;
+
+  /// No description provided for @lara_settings_mode_normal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get lara_settings_mode_normal;
+
+  /// No description provided for @lara_settings_mode_concise.
+  ///
+  /// In en, this message translates to:
+  /// **'Concise'**
+  String get lara_settings_mode_concise;
+
+  /// No description provided for @lara_settings_mode_sarcastic.
+  ///
+  /// In en, this message translates to:
+  /// **'Sarcastic'**
+  String get lara_settings_mode_sarcastic;
+
+  /// No description provided for @lara_settings_temperature.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get lara_settings_temperature;
+
+  /// No description provided for @lara_settings_max_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Max Characters'**
+  String get lara_settings_max_characters;
+
+  /// No description provided for @lara_settings_save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Settings'**
+  String get lara_settings_save;
 
   /// No description provided for @made_with_love.
   ///

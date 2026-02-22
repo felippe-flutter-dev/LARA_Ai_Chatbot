@@ -26,7 +26,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       bloc: _vm.loginCubit,
-      listener: (context, state) => _vm.stateObserver(context, state),
+      listener: (context, state) => _vm.loginStateObserver,
       child: Scaffold(
         appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
         body: SafeArea(

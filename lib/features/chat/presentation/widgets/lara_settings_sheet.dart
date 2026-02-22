@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lara_ai/core/data/services/gemini_services.dart';
 import 'package:lara_ai/core/theme/app_colors.dart';
 import 'package:lara_ai/core/theme/theme_extension.dart';
+import 'package:lara_ai/l10n/extension_localizations.dart';
 import '../cubit/lara_settings/lara_settings_cubit.dart';
+import 'lara_personality_options.dart';
 
 class LaraSettingsSheet extends StatelessWidget {
   final LaraSettingsCubit cubit;
@@ -38,32 +40,35 @@ class LaraSettingsSheet extends StatelessWidget {
               ),
               SizedBox(height: 24.h),
               Text(
-                "Configurações da LARA",
+                context.localization!.lara_settings_title,
                 style: context.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 24.h),
-              Text("Personalidade", style: context.textTheme.bodyLarge),
+              Text(
+                context.localization!.lara_settings_personality,
+                style: context.textTheme.bodyLarge,
+              ),
               SizedBox(height: 12.h),
               Row(
                 children: [
-                  _PersonalityOption(
-                    label: "Normal",
+                  PersonalityOption(
+                    label: context.localization!.lara_settings_mode_normal,
                     isSelected: state.personality == LaraPersonality.normal,
                     onTap: () =>
                         cubit.updatePersonality(LaraPersonality.normal),
                   ),
                   SizedBox(width: 8.w),
-                  _PersonalityOption(
-                    label: "Concisa",
+                  PersonalityOption(
+                    label: context.localization!.lara_settings_mode_concise,
                     isSelected: state.personality == LaraPersonality.concise,
                     onTap: () =>
                         cubit.updatePersonality(LaraPersonality.concise),
                   ),
                   SizedBox(width: 8.w),
-                  _PersonalityOption(
-                    label: "Sarcástica",
+                  PersonalityOption(
+                    label: context.localization!.lara_settings_mode_sarcastic,
                     isSelected: state.personality == LaraPersonality.sarcastic,
                     onTap: () =>
                         cubit.updatePersonality(LaraPersonality.sarcastic),
@@ -74,7 +79,10 @@ class LaraSettingsSheet extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Temperatura", style: context.textTheme.bodyLarge),
+                  Text(
+                    context.localization!.lara_settings_temperature,
+                    style: context.textTheme.bodyLarge,
+                  ),
                   Text(
                     state.temperature.toStringAsFixed(2),
                     style: context.textTheme.bodyMedium,
@@ -93,7 +101,7 @@ class LaraSettingsSheet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Máximo de Caracteres",
+                    context.localization!.lara_settings_max_characters,
                     style: context.textTheme.bodyLarge,
                   ),
                   Text(
@@ -120,7 +128,7 @@ class LaraSettingsSheet extends StatelessWidget {
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
-                    child: const Text("Salvar Configurações"),
+                    child: Text(context.localization!.lara_settings_save),
                   ),
                 ),
               ),
@@ -129,43 +137,6 @@ class LaraSettingsSheet extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _PersonalityOption extends StatelessWidget {
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _PersonalityOption({
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          decoration: BoxDecoration(
-            color: isSelected ? context.primaryColorScheme : AppColors.gray100,
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: Center(
-            child: Text(
-              label,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: isSelected ? Colors.white : AppColors.gray700,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

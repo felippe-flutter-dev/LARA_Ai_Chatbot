@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lara_ai/core/data/services/auth_service.dart';
-import 'package:lara_ai/core/errors/ai_error_handler.dart';
+import 'package:lara_ai/core/errors/ai_error/ai_error_handler.dart';
+import 'package:lara_ai/core/errors/ai_error/ai_error_type.dart';
 import 'package:lara_ai/features/chat/domain/repositories/i_chat_repository.dart';
 import '../../domain/entities/chat_message.dart';
 import 'chat_states.dart';
@@ -140,7 +141,7 @@ class ChatCubit extends Cubit<ChatState> {
       _messages.removeLast();
     }
 
-    final String userFriendlyError = AiErrorHandler.handle(error);
+    final AiErrorType userFriendlyError = AiErrorHandler.handle(error);
 
     emit(
       ChatError(

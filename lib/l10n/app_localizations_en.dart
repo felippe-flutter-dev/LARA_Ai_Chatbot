@@ -33,6 +33,71 @@ class AppLocalizationsEn extends AppLocalizations {
   String get common_deleteSuccessMessage => 'Deleted successfully!';
 
   @override
+  String get errorSafety =>
+      'Oops! This topic is a bit sensitive for me and I can\'t answer it. Shall we talk about something else?';
+
+  @override
+  String get errorQuota =>
+      'I\'m a bit overwhelmed with requests right now. Could you try again in a minute?';
+
+  @override
+  String get errorNetwork =>
+      'Looks like I lost my signal for a moment. Please check your connection and try asking me again!';
+
+  @override
+  String get errorConfig =>
+      'I\'m having a technical issue with my settings (API key). Please let support know!';
+
+  @override
+  String get errorInvalid =>
+      'I had a small glitch processing your message. Could you try rewriting it a different way?';
+
+  @override
+  String get errorServer =>
+      'My servers are undergoing quick maintenance. Please try again soon!';
+
+  @override
+  String get errorUnknown =>
+      'I had an internal hiccup and couldn\'t answer you just now. Can you try again?';
+
+  @override
+  String get authErrorUserNotFound =>
+      'User not found. Please check your email.';
+
+  @override
+  String get authErrorWrongPassword => 'Incorrect password. Please try again.';
+
+  @override
+  String get authErrorEmailInUse =>
+      'This email is already in use by another account.';
+
+  @override
+  String get authErrorInvalidEmail => 'The email format is invalid.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'The password is too weak. Use at least 6 characters.';
+
+  @override
+  String get authErrorNetwork =>
+      'Connection error. Please check your internet.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Too many attempts. Please try again later.';
+
+  @override
+  String get authErrorUserDisabled => 'This account has been disabled.';
+
+  @override
+  String get authErrorOperationNotAllowed =>
+      'Email and password login is not enabled.';
+
+  @override
+  String get authErrorUnknown =>
+      'An unexpected error occurred. Please try again.';
+
+  @override
   String get login_welcomeTitle => 'Welcome to LARA';
 
   @override
@@ -217,6 +282,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chat_retryMessage => 'Response error. Try again?';
+
+  @override
+  String get lara_settings_title => 'LARA Settings';
+
+  @override
+  String get lara_settings_personality => 'Personality';
+
+  @override
+  String get lara_settings_mode_normal => 'Normal';
+
+  @override
+  String get lara_settings_mode_concise => 'Concise';
+
+  @override
+  String get lara_settings_mode_sarcastic => 'Sarcastic';
+
+  @override
+  String get lara_settings_temperature => 'Temperature';
+
+  @override
+  String get lara_settings_max_characters => 'Max Characters';
+
+  @override
+  String get lara_settings_save => 'Save Settings';
 
   @override
   String get made_with_love => 'Made with ❤️ by Felippe Pinheiro';
