@@ -1,9 +1,9 @@
-# LARA AI - Sua Assistente Inteligente e Bem-Humorada 🚀
+# LARA AI - Assistente Inteligente com Personalidade Adaptável 🚀
 
 [![LARA AI CI/CD](https://github.com/felippe-flutter-dev/LARA_Ai_Chatbot/actions/workflows/ci.yml/badge.svg)](https://github.com/Valtinho/lara_ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, integrando Inteligência Artificial real (Google Gemini) com uma arquitetura robusta, escalável e resiliente. O projeto foi desenhado para demonstrar excelência técnica em engenharia de software mobile e experiência do usuário.
+LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, que integra a API do Google Gemini a uma arquitetura mobile robusta e escalável. O projeto foi construído para demonstrar como a IA pode ser personalizada para contextos específicos de negócio, utilizando como **estudo de caso** a persona da Multiplier Educação.
 
 <img src=https://github.com/user-attachments/assets/7933e79d-c102-4723-be96-04a176ff0b06 width="800"/>
 
@@ -12,6 +12,18 @@ LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, inte
 ## 🎨 Design & Prototipagem (Figma)
 Todo o desenvolvimento foi precedido por um estudo rigoroso de interface e experiência do usuário no Figma, garantindo fidelidade visual e uma jornada fluida.
 - **Link do Protótipo:** [Acesse aqui no Figma](https://www.figma.com/design/ZY6hmmJcxiJ2Tt9YqJembk/Sem-t%C3%ADtulo?node-id=0-1&t=hiYuSkCtsmeLRykM-1)
+
+
+---
+
+## 🎯 O Conceito
+A proposta deste projeto é ir além do "chat genérico". A LARA demonstra o uso de **Engenharia de Prompt** avançada para criar uma assistente com nicho definido (Educação Executiva e Investimentos) e personalidades trocáveis em tempo real.
+
+### 🎭 Engine de Personalidades
+O sistema utiliza um injetor dinâmico de prompts que permite ao usuário alternar entre três comportamentos:
+* **Normal:** Uma assistente leve, bem-humorada e inteligente.
+* **Conciso:** Foco em pragmatismo, entregando respostas curtas e diretas ao ponto.
+* **Sarcástico:** Uma persona ácida e irônica, que utiliza o sarcasmo como ferramenta de provocação intelectual.
 
 ---
 
@@ -41,10 +53,14 @@ A LARA utiliza a API do **Google Gemini** com efeito de **Streaming** e renderiz
 <img src=https://github.com/user-attachments/assets/d04ca9d9-b95c-4bc0-9c5b-2c44a2df6761 width="200"/>
 <img src=https://github.com/user-attachments/assets/79fb05f2-bc04-4fa9-9bcc-f124824a5822 width="200"/>
 
+---
+
 ### 💾 Persistência de Dados e Isolamento (UUID)
 A experiência da LARA é contínua e segura.
 - **Histórico Persistente:** Suas conversas não são perdidas ao fechar o app. Todo o chat é salvo automaticamente na nuvem (Firestore).
 - **Isolamento por UUID:** Utilizamos o *User Unique ID* do Firebase Auth para indexar o banco de dados. Isso garante que o histórico de mensagens seja **exclusivo** de cada usuário. O que você conversa com a LARA fica acessível apenas para a sua conta, garantindo integridade e privacidade total dos dados.
+
+---
 
 ### 🔒 Segurança e Privacidade de Elite
 - **Autenticação Multi-Fator (MFA):** Proteção via biometria nativa (FaceID/Digital) na entrada e após o login.
