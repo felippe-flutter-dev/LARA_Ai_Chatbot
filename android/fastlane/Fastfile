@@ -1,0 +1,22 @@
+default_platform(:android)
+
+platform :android do
+  desc "Gera o APK renomeado e versionado"
+  lane :build_for_release do
+    build_num = ENV["GITHUB_RUN_NUMBER"] || "1"
+    version_name = "1.0.#{build_num}"
+
+    # O comando 'sh' roda de dentro da pasta 'android',
+    # por isso usamos ../.. para chegar na raiz do projeto Flutter
+    sh("cd ../.. && flutter build apk --release --build-name=#{version_name} --build-number=#{build_num}")
+
+    original_apk = "../../build/app/outputs/flutter-apk/app-release.apk"
+    new_apk_name = "../../build/app/outputs/flutter-apk/LARA_AI_v#{version_name}.apk"
+
+    if File.exist?(original_apk)
+      File.rename(original_apk, new_apk_name)
+    else
+      UI.user_error!("APK não encontrado em #{original_apk}")
+    end
+  end
+end
