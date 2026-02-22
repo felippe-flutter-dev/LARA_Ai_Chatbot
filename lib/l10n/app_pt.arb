@@ -11,6 +11,27 @@
   "common_errorGeneric": "Ocorreu um erro. Por favor, tente novamente.",
   "common_deleteSuccessMessage": "Excluído com sucesso!",
 
+  "@@__AI_ERROR_HANDLER": "--- AI Error Handler ---",
+  "errorSafety": "Ops! Este assunto é um pouco sensível para mim e não posso responder. Vamos falar de outra coisa?",
+  "errorQuota": "Estou um pouco sobrecarregada agora com muitos pedidos. Pode tentar novamente em um minutinho?",
+  "errorNetwork": "Parece que perdi o sinal por um momento. Verifique sua conexão e tente me perguntar de novo!",
+  "errorConfig": "Estou com um problema técnico na minha configuração (chave de acesso). Avise o suporte, por favor!",
+  "errorInvalid": "Tive um pequeno problema ao processar sua mensagem. Pode tentar reescrevê-la de outra forma?",
+  "errorServer": "Meus servidores estão passando por uma manutenção rápida. Tente novamente em breve!",
+  "errorUnknown": "Tive um probleminha interno e não consegui te responder agora. Pode tentar de novo?",
+
+  "@@__AUTH_ERROR_HANDLER": "--- Auth Error Handler ---",
+  "authErrorUserNotFound": "Usuário não encontrado. Verifique seu e-mail.",
+  "authErrorWrongPassword": "Senha incorreta. Tente novamente.",
+  "authErrorEmailInUse": "Este e-mail já está em uso por outra conta.",
+  "authErrorInvalidEmail": "O formato do e-mail é inválido.",
+  "authErrorWeakPassword": "A senha é muito fraca. Use pelo menos 6 caracteres.",
+  "authErrorNetwork": "Erro de conexão. Verifique sua internet.",
+  "authErrorTooManyRequests": "Muitas tentativas. Tente novamente mais tarde.",
+  "authErrorUserDisabled": "Esta conta foi desativada.",
+  "authErrorOperationNotAllowed": "Login com e-mail e senha não está habilitado.",
+  "authErrorUnknown": "Ocorreu um erro inesperado. Tente novamente.",
+
   "@@__LOGIN__": "--- Login Screen ---",
   "login_welcomeTitle": "Bem-vindo à LARA",
   "login_welcomeSubtitle": "Sua parceira de IA com senso de humor 😉",
@@ -78,6 +99,16 @@
   "chat_maxTokensLabel": "Máximo de Caracteres",
   "chat_buttonSaveSettings": "Salvar Configurações",
   "chat_retryMessage": "Erro na resposta. Tentar novamente?",
+
+  "@@__SETTINGS": "--- Configurações da LARA ---",
+  "lara_settings_title": "Configurações da LARA",
+  "lara_settings_personality": "Personalidade",
+  "lara_settings_mode_normal": "Normal",
+  "lara_settings_mode_concise": "Concisa",
+  "lara_settings_mode_sarcastic": "Sarcástica",
+  "lara_settings_temperature": "Temperatura",
+  "lara_settings_max_characters": "Máximo de Caracteres",
+  "lara_settings_save": "Salvar Configurações",
 
   "made_with_love": "Feito com ❤️ por Felippe Pinheiro"
 }

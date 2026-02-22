@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lara_ai/core/errors/ai_error/ai_error_extension.dart';
 import 'package:lara_ai/core/theme/app_assets.dart';
 import 'package:lara_ai/core/theme/app_colors.dart';
 import 'package:lara_ai/features/chat/presentation/cubit/lara_settings/lara_settings_cubit.dart';
@@ -41,7 +42,7 @@ class ChatViewModel {
         textController.text = _lastUserMessage!;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(state.message),
+            content: Text(state.errorType.localized(context)),
             backgroundColor: AppColors.error,
             behavior: SnackBarBehavior.floating,
           ),

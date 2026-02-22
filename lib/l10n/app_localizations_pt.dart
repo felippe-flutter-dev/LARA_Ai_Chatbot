@@ -34,6 +34,69 @@ class AppLocalizationsPt extends AppLocalizations {
   String get common_deleteSuccessMessage => 'Excluído com sucesso!';
 
   @override
+  String get errorSafety =>
+      'Ops! Este assunto é um pouco sensível para mim e não posso responder. Vamos falar de outra coisa?';
+
+  @override
+  String get errorQuota =>
+      'Estou um pouco sobrecarregada agora com muitos pedidos. Pode tentar novamente em um minutinho?';
+
+  @override
+  String get errorNetwork =>
+      'Parece que perdi o sinal por um momento. Verifique sua conexão e tente me perguntar de novo!';
+
+  @override
+  String get errorConfig =>
+      'Estou com um problema técnico na minha configuração (chave de acesso). Avise o suporte, por favor!';
+
+  @override
+  String get errorInvalid =>
+      'Tive um pequeno problema ao processar sua mensagem. Pode tentar reescrevê-la de outra forma?';
+
+  @override
+  String get errorServer =>
+      'Meus servidores estão passando por uma manutenção rápida. Tente novamente em breve!';
+
+  @override
+  String get errorUnknown =>
+      'Tive um probleminha interno e não consegui te responder agora. Pode tentar de novo?';
+
+  @override
+  String get authErrorUserNotFound =>
+      'Usuário não encontrado. Verifique seu e-mail.';
+
+  @override
+  String get authErrorWrongPassword => 'Senha incorreta. Tente novamente.';
+
+  @override
+  String get authErrorEmailInUse =>
+      'Este e-mail já está em uso por outra conta.';
+
+  @override
+  String get authErrorInvalidEmail => 'O formato do e-mail é inválido.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'A senha é muito fraca. Use pelo menos 6 caracteres.';
+
+  @override
+  String get authErrorNetwork => 'Erro de conexão. Verifique sua internet.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Muitas tentativas. Tente novamente mais tarde.';
+
+  @override
+  String get authErrorUserDisabled => 'Esta conta foi desativada.';
+
+  @override
+  String get authErrorOperationNotAllowed =>
+      'Login com e-mail e senha não está habilitado.';
+
+  @override
+  String get authErrorUnknown => 'Ocorreu um erro inesperado. Tente novamente.';
+
+  @override
   String get login_welcomeTitle => 'Bem-vindo à LARA';
 
   @override
@@ -219,6 +282,30 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get chat_retryMessage => 'Erro na resposta. Tentar novamente?';
+
+  @override
+  String get lara_settings_title => 'Configurações da LARA';
+
+  @override
+  String get lara_settings_personality => 'Personalidade';
+
+  @override
+  String get lara_settings_mode_normal => 'Normal';
+
+  @override
+  String get lara_settings_mode_concise => 'Concisa';
+
+  @override
+  String get lara_settings_mode_sarcastic => 'Sarcástica';
+
+  @override
+  String get lara_settings_temperature => 'Temperatura';
+
+  @override
+  String get lara_settings_max_characters => 'Máximo de Caracteres';
+
+  @override
+  String get lara_settings_save => 'Salvar Configurações';
 
   @override
   String get made_with_love => 'Feito com ❤️ por Felippe Pinheiro';

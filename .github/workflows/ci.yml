@@ -5,6 +5,7 @@ on:
     branches:
       - 'dev/**'
       - 'staging'
+      - 'main'
 
 jobs:
   test-and-merge:
@@ -73,3 +74,59 @@ jobs:
           git checkout main
           git merge $GITHUB_SHA --no-edit
           git push origin main
+
+  build-and-release:
+    needs: test-and-merge
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "DEBUG_MODE=false" >> .env
+
+      - name: Setup Ruby (Fastlane)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+          working-directory: android
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Create .env for Build
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "DEBUG_MODE=false" >> .env
+
+      - name: Build and Rename APK with Fastlane
+        run: bundle exec fastlane android build_for_release
+        working-directory: android
+        env:
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - name: Upload to GitHub Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: LARA AI Release v1.0.${{ github.run_number }}
+          draft: false
+          prerelease: false
+          files: build/app/outputs/flutter-apk/LARA_AI_v*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

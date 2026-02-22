@@ -11,6 +11,27 @@
   "common_errorGeneric": "An error occurred. Please try again.",
   "common_deleteSuccessMessage": "Deleted successfully!",
 
+  "@@__AI_ERROR_HANDLER": "--- AI Error Handler ---",
+  "errorSafety": "Oops! This topic is a bit sensitive for me and I can't answer it. Shall we talk about something else?",
+  "errorQuota": "I'm a bit overwhelmed with requests right now. Could you try again in a minute?",
+  "errorNetwork": "Looks like I lost my signal for a moment. Please check your connection and try asking me again!",
+  "errorConfig": "I'm having a technical issue with my settings (API key). Please let support know!",
+  "errorInvalid": "I had a small glitch processing your message. Could you try rewriting it a different way?",
+  "errorServer": "My servers are undergoing quick maintenance. Please try again soon!",
+  "errorUnknown": "I had an internal hiccup and couldn't answer you just now. Can you try again?",
+
+  "@@__AUTH_ERROR_HANDLER": "--- Auth Error Handler ---",
+  "authErrorUserNotFound": "User not found. Please check your email.",
+  "authErrorWrongPassword": "Incorrect password. Please try again.",
+  "authErrorEmailInUse": "This email is already in use by another account.",
+  "authErrorInvalidEmail": "The email format is invalid.",
+  "authErrorWeakPassword": "The password is too weak. Use at least 6 characters.",
+  "authErrorNetwork": "Connection error. Please check your internet.",
+  "authErrorTooManyRequests": "Too many attempts. Please try again later.",
+  "authErrorUserDisabled": "This account has been disabled.",
+  "authErrorOperationNotAllowed": "Email and password login is not enabled.",
+  "authErrorUnknown": "An unexpected error occurred. Please try again.",
+
   "@@__LOGIN__": "--- Login Screen ---",
   "login_welcomeTitle": "Welcome to LARA",
   "login_welcomeSubtitle": "Your AI sidekick with a sense of humor 😉",
@@ -72,6 +93,16 @@
   "chat_maxTokensLabel": "Max Characters",
   "chat_buttonSaveSettings": "Save Settings",
   "chat_retryMessage": "Response error. Try again?",
+
+  "@@__SETTINGS": "--- LARA Settings ---",
+  "lara_settings_title": "LARA Settings",
+  "lara_settings_personality": "Personality",
+  "lara_settings_mode_normal": "Normal",
+  "lara_settings_mode_concise": "Concise",
+  "lara_settings_mode_sarcastic": "Sarcastic",
+  "lara_settings_temperature": "Temperature",
+  "lara_settings_max_characters": "Max Characters",
+  "lara_settings_save": "Save Settings",
 
   "made_with_love": "Made with ❤️ by Felippe Pinheiro"
 }
