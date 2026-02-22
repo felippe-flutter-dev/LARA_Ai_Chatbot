@@ -26,6 +26,8 @@ A infraestrutura de CI/CD automatiza o ciclo de vida desde o desenvolvimento at�
 * **Deploy com Fastlane:** Ao atingir a branch `main`, o **Fastlane** assume a automação do build Android, gerando o APK de release com versionamento dinâmico.
 * **GitHub Releases:** O binário final (.apk) é automaticamente publicado no GitHub Releases via CI.
 
+---
+
 ## 🎨 Design & Prototipagem (Figma)
 Todo o desenvolvimento foi precedido por um estudo rigoroso de interface e experiência do usuário no Figma, garantindo fidelidade visual e uma jornada fluida.
 - **Link do Protótipo:** [Acesse aqui no Figma](https://www.figma.com/design/ZY6hmmJcxiJ2Tt9YqJembk/Sem-t%C3%ADtulo?node-id=0-1&t=hiYuSkCtsmeLRykM-1)
