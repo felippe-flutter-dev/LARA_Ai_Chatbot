@@ -55,10 +55,12 @@ A LARA utiliza a API do **Google Gemini** com efeito de **Streaming** e renderiz
 
 ---
 
-### 💾 Persistência de Dados e Isolamento (UUID)
-A experiência da LARA é contínua e segura.
-- **Histórico Persistente:** Suas conversas não são perdidas ao fechar o app. Todo o chat é salvo automaticamente na nuvem (Firestore).
-- **Isolamento por UUID:** Utilizamos o *User Unique ID* do Firebase Auth para indexar o banco de dados. Isso garante que o histórico de mensagens seja **exclusivo** de cada usuário. O que você conversa com a LARA fica acessível apenas para a sua conta, garantindo integridade e privacidade total dos dados.
+### 💾 Persistência de Dados e Isolamento (Local Database)
+A experiência da LARA é contínua, rápida e segura, utilizando persistência local robusta.
+
+**Histórico Persistente** (SQLite): As conversas são salvas localmente utilizando o plugin sqflite. Isso garante que o histórico seja preservado mesmo após o fechamento do app e permite acesso instantâneo às mensagens anteriores, independente de conexão com a internet.
+
+**Isolamento de Dados**: As mensagens são indexadas e vinculadas ao perfil do usuário autenticado. O banco de dados local garante que a experiência seja personalizada e os dados fiquem armazenados de forma segura no dispositivo, respeitando a privacidade e a integridade das informações do usuário.
 
 ---
 
