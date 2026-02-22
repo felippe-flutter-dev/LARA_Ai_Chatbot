@@ -9,10 +9,26 @@ LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, que 
 
 ---
 
+## 🚀 Engenharia de Qualidade e DevOps (CI/CD)
+O projeto implementa um fluxo de **entrega contínua e proteção de código** rigoroso, garantindo que apenas versões estáveis cheguem à produção.
+
+### 🛡️ Pipeline Local (`.push.bat`)
+Para evitar falhas no repositório remoto e garantir a integridade do `main`, foi desenvolvido um script de automação local. Antes de cada commit, o script executa:
+1. **Auto-fix & Formatação:** Correção automática de problemas simples e padronização.
+2. **Análise Estática (Linter):** Verificação rigorosa de regras de código.
+3. **Testes Unitários:** Execução obrigatória de todos os testes.
+4. **Git Flow Automatizado:** Se aprovado, o script solicita a mensagem de commit e realiza o `push` para a branch atual.
+
+### ⚙️ GitHub Actions & Fastlane (Double Shield)
+A infraestrutura de CI/CD automatiza o ciclo de vida desde o desenvolvimento até o release:
+* **Validação de Branches:** Controle de nomenclatura (ex: `dev/LARA-XXX_feat`) para manter a organização do projeto.
+* **Merge Automático:** Pull Requests em `dev` são validados e integrados automaticamente em `staging` e, por fim, em `main`.
+* **Deploy com Fastlane:** Ao atingir a branch `main`, o **Fastlane** assume a automação do build Android, gerando o APK de release com versionamento dinâmico.
+* **GitHub Releases:** O binário final (.apk) é automaticamente publicado no GitHub Releases via CI.
+
 ## 🎨 Design & Prototipagem (Figma)
 Todo o desenvolvimento foi precedido por um estudo rigoroso de interface e experiência do usuário no Figma, garantindo fidelidade visual e uma jornada fluida.
 - **Link do Protótipo:** [Acesse aqui no Figma](https://www.figma.com/design/ZY6hmmJcxiJ2Tt9YqJembk/Sem-t%C3%ADtulo?node-id=0-1&t=hiYuSkCtsmeLRykM-1)
-
 
 ---
 
