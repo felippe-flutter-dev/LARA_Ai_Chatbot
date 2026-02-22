@@ -1,11 +1,11 @@
 # LARA AI - Sua Assistente Inteligente e Bem-Humorada 🚀
 
-[![LARA AI CI/CD](https://github.com/Valtinho/lara_ai/actions/workflows/ci.yml/badge.svg)](https://github.com/Valtinho/lara_ai/actions/workflows/ci.yml)
+[![LARA AI CI/CD](https://github.com/felippe-flutter-dev/LARA_Ai_Chatbot/actions/workflows/ci.yml/badge.svg)](https://github.com/Valtinho/lara_ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, integrando Inteligência Artificial real (Google Gemini) com uma arquitetura robusta, escalável e resiliente. O projeto foi desenhado para demonstrar excelência técnica em engenharia de software mobile e experiência do usuário.
 
-[NISERI IMAGEM [Banner ou Mockup do App] AQUI]
+<img src=https://github.com/user-attachments/assets/7933e79d-c102-4723-be96-04a176ff0b06 width="800"/>
 
 ---
 
@@ -29,25 +29,33 @@ Este projeto não é apenas um chat; é um modelo de aplicação de padrões de 
 
 ## ✨ Funcionalidades em Destaque
 
-### 🤖 IA Real com Personalidade
-A LARA utiliza a API do **Google Gemini** com efeito de **Streaming**. 
+### 🤖 IA Real com Personalidade & Visual Rico
+A LARA utiliza a API do **Google Gemini** com efeito de **Streaming** e renderização visual avançada.
 - **Troca de Personalidade:** Alterne entre os modos *Normal*, *Conciso* ou *Sarcástico* em tempo real.
-- **Suporte a Markdown:** Respostas ricas com tabelas, blocos de código, negrito e listas.
-- **Ajustes Técnicos:** Controle de temperatura e limite de resposta via UI.
+- **Renderização Markdown Completa:** A LARA não envia apenas texto plano. Ela é capaz de gerar e formatar:
+  - 📊 **Tabelas** organizadas;
+  - 💻 **Blocos de código** com syntax highlighting (dart, python, js, etc.);
+  - 📝 **Listas, citações e negrito** para facilitar a leitura.
+- **Ajustes Técnicos:** Controle de temperatura e limite de tokens via UI.
 
-[NISERI IMAGEM [Configurações da LARA] AQUI]
+<img src=https://github.com/user-attachments/assets/d04ca9d9-b95c-4bc0-9c5b-2c44a2df6761 width="200"/>
+<img src=https://github.com/user-attachments/assets/79fb05f2-bc04-4fa9-9bcc-f124824a5822 width="200"/>
+
+### 💾 Persistência de Dados e Isolamento (UUID)
+A experiência da LARA é contínua e segura.
+- **Histórico Persistente:** Suas conversas não são perdidas ao fechar o app. Todo o chat é salvo automaticamente na nuvem (Firestore).
+- **Isolamento por UUID:** Utilizamos o *User Unique ID* do Firebase Auth para indexar o banco de dados. Isso garante que o histórico de mensagens seja **exclusivo** de cada usuário. O que você conversa com a LARA fica acessível apenas para a sua conta, garantindo integridade e privacidade total dos dados.
 
 ### 🔒 Segurança e Privacidade de Elite
 - **Autenticação Multi-Fator (MFA):** Proteção via biometria nativa (FaceID/Digital) na entrada e após o login.
 - **Isolamento de Dados:** Histórico vinculado ao UUID do Firebase, garantindo privacidade total.
 
-[NISERI IMAGEM [Fluxo de Biometria] AQUI]
+<img src=https://github.com/user-attachments/assets/7ded403f-4b2b-4140-9282-6f620c3740e5 width="200"/>
+<img src=https://github.com/user-attachments/assets/34297d0e-d2f1-4145-bd26-d0bb6128851c width="200"/>
 
 ### 🛠️ Resiliência e UX
 - **Tratamento de Erros:** Mapeamento de erros técnicos para mensagens humanas e acolhedoras.
 - **Retry Inteligente:** Em caso de falha, o texto do usuário volta automaticamente para o campo de edição.
-
-[NISERI IMAGEM [Fluxo de Erro e Retry] AQUI]
 
 ---
 
@@ -55,6 +63,24 @@ A LARA utiliza a API do **Google Gemini** com efeito de **Streaming**.
 
 1. **Pipeline Local (`.push.bat`):** Script de automação customizado que realiza a limpeza do projeto, análise de linter e executa todos os testes unitários/widget localmente. **Garante que nenhum erro seja enviado para o repositório.**
 2. **GitHub Actions (CI/CD):** Workflow remoto que valida novamente o build e testes em ambiente de integração contínua.
+
+---
+
+## 🌑 Modo noturno
+<img width="150" alt="Screenshot_20260221_205338" src="https://github.com/user-attachments/assets/f90ef5e8-89f3-450b-b110-e2722d48f0cb" />
+<img width="150" alt="Screenshot_20260221_205521" src="https://github.com/user-attachments/assets/39fbd130-769d-41cc-966f-f44c5e968e90" />
+<img width="150" alt="Screenshot_20260221_205531" src="https://github.com/user-attachments/assets/05ab3906-3087-4fed-a4e2-5554448f8a53" />
+<img width="150" alt="Screenshot_20260221_205820" src="https://github.com/user-attachments/assets/b4556a7b-f743-42cd-bea8-95afd5b3a50c" />
+<img width="150" alt="Screenshot_20260221_205834" src="https://github.com/user-attachments/assets/6d0247f6-2358-4ee1-ba3c-851fd717df81" />
+
+---
+
+## ☀️ Modo Claro
+<img width="150" alt="Screenshot_20260221_205447" src="https://github.com/user-attachments/assets/c39a5abb-5b3a-4b9c-bbe6-925d7f15507a" />
+<img width="150" alt="Screenshot_20260221_205512" src="https://github.com/user-attachments/assets/26ecc668-8e29-4b80-9bf4-aa2adbc23aa2" />
+<img width="150" alt="Screenshot_20260221_205542" src="https://github.com/user-attachments/assets/3ff4d8b1-215b-48b9-98b8-ad166259aee2" />
+<img width="150" alt="Screenshot_20260221_205807" src="https://github.com/user-attachments/assets/c3ecacb4-4427-4ddf-90db-73145c1f18fd" />
+<img width="150" alt="Screenshot_20260221_205850" src="https://github.com/user-attachments/assets/8a559fa6-f7f5-47d2-9dc2-91eb3413256e" />
 
 ---
 
