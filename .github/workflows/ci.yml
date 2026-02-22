@@ -1,0 +1,75 @@
+name: LARA AI CI/CD
+
+on:
+  push:
+    branches:
+      - 'dev/**'
+      - 'staging'
+
+jobs:
+  test-and-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check Branch Naming
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          if [[ ! $BRANCH_NAME =~ ^dev/LARA-[0-9]{3}_.*$ && $BRANCH_NAME != staging ]]; then
+            echo "Branch '$BRANCH_NAME' não segue convenção dev/LARA-XXX-*. Rejeitando."
+            exit 1
+          fi
+
+      - name: Create .env file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "DEBUG_MODE=false" >> .env
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Linter Analysis
+        run: flutter analyze
+
+      - name: Run Tests
+        run: |
+          if [ -d "test" ]; then
+            flutter test
+          else
+            echo "Nenhum diretório de testes encontrado. Pulando..."
+          fi
+
+      - name: Merge Dev to Staging
+        if: startsWith(github.ref, 'refs/heads/dev/')
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git reset --hard
+          git fetch origin staging
+          git checkout staging
+          git merge $GITHUB_SHA --no-edit
+          git push origin staging
+
+      - name: Merge Staging to Main
+        if: github.ref == 'refs/heads/staging'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git reset --hard
+          git fetch origin main
+          git checkout main
+          git merge $GITHUB_SHA --no-edit
+          git push origin main

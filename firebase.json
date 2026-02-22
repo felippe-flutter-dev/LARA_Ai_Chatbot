@@ -1,1 +1,22 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"lara-ai-95e1a","appId":"1:77580522292:android:bc3ae9af3b326765688b61","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"lara-ai-95e1a","configurations":{"android":"1:77580522292:android:bc3ae9af3b326765688b61","ios":"1:77580522292:ios:aa3e8fb12224f0c5688b61"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "lara-ai-95e1a",
+          "appId": "1:77580522292:android:bc3ae9af3b326765688b61",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "lara-ai-95e1a",
+          "configurations": {
+            "android": "1:77580522292:android:bc3ae9af3b326765688b61",
+            "ios": "1:77580522292:ios:aa3e8fb12224f0c5688b61"
+          }
+        }
+      }
+    }
+  }
+}
