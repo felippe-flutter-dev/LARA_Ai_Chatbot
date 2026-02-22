@@ -1,6 +1,7 @@
 # LARA AI - Assistente Inteligente com Personalidade Adaptável 🚀
 
 [![LARA AI CI/CD](https://github.com/felippe-flutter-dev/LARA_Ai_Chatbot/actions/workflows/ci.yml/badge.svg)](https://github.com/Valtinho/lara_ai/actions/workflows/ci.yml)
+[![Latest Release](https://img.shields.io/github/v/release/felippe-flutter-dev/LARA_Ai_Chatbot?label=Download%20APK&logo=android&color=brightgreen)](https://github.com/felippe-flutter-dev/LARA_Ai_Chatbot/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 LARA é uma Prova de Conceito (POC) de alto nível desenvolvida em Flutter, que integra a API do Google Gemini a uma arquitetura mobile robusta e escalável. O projeto foi construído para demonstrar como a IA pode ser personalizada para contextos específicos de negócio, utilizando como **estudo de caso** a persona da Multiplier Educação.
