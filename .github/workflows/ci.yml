@@ -5,6 +5,7 @@ on:
     branches:
       - 'dev/**'
       - 'staging'
+      - 'main'
 
 jobs:
   test-and-merge:
@@ -73,3 +74,28 @@ jobs:
           git checkout main
           git merge $GITHUB_SHA --no-edit
           git push origin main
+  build-and-release:
+    needs: test-and-pipeline
+    # ESTA É A CHAVE: Só roda se a branch atual for a main
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ... (setup flutter, pub get, gen-l10n) ...
+
+      - name: Build APK with Fastlane
+        run: |
+          cd android
+          fastlane android release # Supondo que você criou essa lane
+        env:
+          # Se for usar Firebase App Distribution ou Play Store, as chaves vão aqui
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Upload to GitHub Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          files: build/app/outputs/flutter-apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
