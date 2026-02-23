@@ -56,6 +56,9 @@ Este projeto não é apenas um chat; é um modelo de aplicação de padrões de 
 - **Princípios SOLID:** Código focado em manutenibilidade e baixo acoplamento.
 - **Internacionalização (i18n):** Suporte nativo completo para **Português (BR)** e **Inglês (EN)** via arquivos `.arb`.
 
+### 📊Diagrama da arquitetura
+<img width="700" alt="Untitled diagram-2026-02-22-235540" src="https://github.com/user-attachments/assets/2da46e91-f891-402c-a915-8a297a68ece9" />
+
 ---
 
 ## ✨ Funcionalidades em Destaque
@@ -72,6 +75,9 @@ A LARA utiliza a API do **Google Gemini** com efeito de **Streaming** e renderiz
 <img src=https://github.com/user-attachments/assets/d04ca9d9-b95c-4bc0-9c5b-2c44a2df6761 width="200"/>
 <img src=https://github.com/user-attachments/assets/79fb05f2-bc04-4fa9-9bcc-f124824a5822 width="200"/>
 
+### 📊 Diagrama de funcionamento da IA
+<img width="700" alt="Untitled diagram-2026-02-22-235706" src="https://github.com/user-attachments/assets/76f9a759-87bd-4eef-9412-11f026eb4f8f" />
+
 ---
 
 ### 💾 Persistência de Dados e Isolamento (Local Database)
@@ -80,6 +86,9 @@ A experiência da LARA é contínua, rápida e segura, utilizando persistência 
 **Histórico Persistente** (SQLite): As conversas são salvas localmente utilizando o plugin sqflite. Isso garante que o histórico seja preservado mesmo após o fechamento do app e permite acesso instantâneo às mensagens anteriores, independente de conexão com a internet.
 
 **Isolamento de Dados**: As mensagens são indexadas e vinculadas ao perfil do usuário autenticado. O banco de dados local garante que a experiência seja personalizada e os dados fiquem armazenados de forma segura no dispositivo, respeitando a privacidade e a integridade das informações do usuário.
+
+### 📊 Diagrama da tabela de dados.
+<img width="200" alt="Untitled diagram-2026-02-22-235821" src="https://github.com/user-attachments/assets/2fd9ffcb-552f-468e-85b6-554221630f0f" />
 
 ---
 
