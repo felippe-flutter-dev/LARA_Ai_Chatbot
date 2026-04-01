@@ -139,7 +139,7 @@ A experiência da LARA é contínua, rápida e segura, utilizando persistência 
 
 ### 2. Instalação
 ```bash
-git clone https://github.com/Valtinho/lara_ai.git
+git clone https://github.com/felippe-flutter-dev/LARA_Ai_Chatbot.git
 cd lara_ai
 flutter pub get
 ```
